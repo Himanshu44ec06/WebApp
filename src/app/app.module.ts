@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule} from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 
@@ -10,7 +11,8 @@ import { InterceptorsProviders } from './Interceptors';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule.forRoot({})
   ],
   providers: [
     InterceptorsProviders
