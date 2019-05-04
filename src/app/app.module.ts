@@ -9,6 +9,8 @@ import { InterceptorsProviders } from './Interceptors';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './error';
+
+/* Lazy Loaded  Module */ 
 import { UserModule } from './user/user.module';
 
 @NgModule({
@@ -22,7 +24,6 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    UserModule,
     AppRoutingModule,
     StoreModule.forRoot({})
   ],

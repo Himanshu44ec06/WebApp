@@ -11,10 +11,10 @@
         </ul>
         <ul class="navbar-nav navbar-right">
             <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" [routerLink]="['/user/Login']">{{language.welcome}} {{ userName }}</a>
+                <a class="nav-link" [routerLink]="['/user/login']">{{language.welcome}} {{ userName }}</a>
             </li>
             <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link" [routerLink]="['/user/Login']">{{language.LogIn}}</a>
+                <a class="nav-link" [routerLink]="['/user/login']">{{language.LogIn}}</a>
             </li>
             <li class="nav-item" *ngIf="isLoggedIn">
                 <a class="nav-link" (click)="logOut()" style="cursor: pointer">{{language.LogOut}}</a>
