@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">{{language.CompanyName}}</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink='/welcome'>{{ language.Home}}</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink='/products'>{{language.ProductList}}</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" [routerLink]="['/user/Login']">{{language.welcome}} {{ userName }}</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn">
+                <a class="nav-link" [routerLink]="['/user/Login']">{{language.LogIn}}</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" (click)="logOut()" style="cursor: pointer">{{language.LogOut}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
