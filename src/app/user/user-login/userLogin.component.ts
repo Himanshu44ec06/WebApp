@@ -34,7 +34,7 @@ export class UserLoginComponent implements OnInit, OnDestroy {
     }
 
     login(loginForm) {
-
+            console.log(loginForm);
     }
 
 

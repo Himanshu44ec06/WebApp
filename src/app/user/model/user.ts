@@ -3,5 +3,11 @@ export interface User {
     id: number;
     userName: string;
     token: string;
-    isAdmin: boolean;
+    roles: Roles [ ];
+}
+
+export  interface  Roles {
+    id: number;
+    token: string;
+    moduleId: string;
 }
