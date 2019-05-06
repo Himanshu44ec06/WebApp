@@ -38,7 +38,7 @@
                        ngModel
                        name="password" #passwordVar="ngModel"/>
                 <div class="invalid-feedback" *ngIf="(passwordVar.touched || passwordVar.dirty) && passwordVar.hasError('required')">
-                  {{language.UserNameRequire}}
+                  {{language.PasswordRequire}}
                 </div>
               </div>
             </div>
