@@ -15,6 +15,10 @@ export  class  AuthService {
     constructor() {
     }
 
+     getCurrentUser(): User| null {
+        return  this.currentUser;
+    }
+
     login(username: string, password: string) {
 
         if (username !== 'wrong') {
@@ -31,7 +35,7 @@ export  class  AuthService {
             this.redirectUrl =  GlobalVariable.Url.AfterLogin;
         } else {
             this.currentUser = null;
-            this.redirectUrl =  null;
+            this.emptyRedirectUrl();
         }
         const  eventEmitter  =  new EventEmitter(true);
 
@@ -48,5 +52,10 @@ export  class  AuthService {
 
     logout(): void {
         this.currentUser = null;
+        this.emptyRedirectUrl();
+    }
+
+    private  emptyRedirectUrl() {
+        this.redirectUrl =  '';
     }
 }
