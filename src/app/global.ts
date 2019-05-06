@@ -2,6 +2,9 @@ export const GlobalVariable  =  Object.freeze({
     Store : {
         UserModule : 'User'
     },
+    Url : {
+       AfterLogin: 'welcome'
+    },
     LanguageResourse : {
         CompanyName : 'Ishine',
         Home : 'Home',
@@ -15,6 +18,8 @@ export const GlobalVariable  =  Object.freeze({
         CancelButton: 'Cancel',
         MarkUserName : 'Mask user name',
         UserNameRequire : 'User name is required.',
-        PasswordRequire : 'Password is required.'
+        PasswordRequire : 'Password is required.',
+        InCorrectCred : 'Your email or password is incorrect.',
+        InValidLoginForm : 'Please enter valid username and password'
     }
 });

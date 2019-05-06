@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import {Observable} from 'rxjs';
+import { GlobalVariable } from '../../global';
 
 import { User } from '../model/user';
 
@@ -8,29 +9,37 @@ import { User } from '../model/user';
 })
 export  class  AuthService {
 
-    private currentUser: User;
+    private currentUser: User | null;
+    redirectUrl: string;
 
     constructor() {
     }
 
     login(username: string, password: string) {
-       this.currentUser = {
-          id: 2,
-          userName: username,
-          token: 'authToken',
-          roles: [{
-              id: 1,
-              token: 'authToken',
-              moduleId: 'token'
-          }]
-       };
-       const  eventEmitter  =  new EventEmitter(true);
 
-       setTimeout(() => {
+        if (username !== 'wrong') {
+            this.currentUser = {
+                id: 2,
+                userName: username,
+                token: 'authToken',
+                roles: [{
+                    id: 1,
+                    token: 'authToken',
+                    moduleId: 'token'
+                }]
+            };
+            this.redirectUrl =  GlobalVariable.Url.AfterLogin;
+        } else {
+            this.currentUser = null;
+            this.redirectUrl =  null;
+        }
+        const  eventEmitter  =  new EventEmitter(true);
+
+        setTimeout(() => {
               eventEmitter.emit(this.currentUser);
          }, 100);
 
-       return  eventEmitter;
+        return  eventEmitter;
     }
 
     isLoggedIn(): boolean {

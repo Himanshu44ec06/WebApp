@@ -6,6 +6,8 @@ import { Store, select } from '@ngrx/store';
 import * as fromUser from '../state';
 import * as action from '../state/user.action';
 import * as fromRoot from '../../state/state';
+import { AuthService } from '../service/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +19,9 @@ export class UserLoginComponent implements OnInit, OnDestroy {
     componentActive = true;
     maskUserName: boolean;
 
-    constructor(private store: Store<fromRoot.State>) {
+    constructor(private store: Store<fromRoot.State>,
+                private authService: AuthService,
+                private router: Router) {
 
     }
 
@@ -34,7 +38,20 @@ export class UserLoginComponent implements OnInit, OnDestroy {
     }
 
     login(loginForm) {
-            console.log(loginForm);
+        if (loginForm && loginForm.valid) {
+            const userName = loginForm.form.value.userName;
+            const password = loginForm.form.value.password;
+            this.authService.login(userName, password).subscribe(() => {
+                if (this.authService.redirectUrl) {
+                    this.router.navigateByUrl(this.authService.redirectUrl);
+                    this.errorMessage = '';
+                } else {
+                    this.errorMessage = GlobalVariable.LanguageResourse.InCorrectCred;
+                }
+            });
+          } else {
+            this.errorMessage =  GlobalVariable.LanguageResourse.InValidLoginForm;
+          }
     }
 
 
