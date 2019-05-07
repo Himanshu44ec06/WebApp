@@ -1,5 +1,8 @@
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
+
+
+import { ShellComponent }  from  './index';
 
 @NgModule({
     imports : [
@@ -10,4 +13,6 @@ import { SharedModule } from '../shared/shared.module';
     declarations: []
 })
 
-export  class  AdminModule {}
+export  class  AdminModule {
+
+}
