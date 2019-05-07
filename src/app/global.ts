@@ -2,6 +2,9 @@ export const GlobalVariable  =  Object.freeze({
     Store : {
         UserModule : 'User'
     },
+    LocalStorage : {
+        CURRENT_USER : 'UserInfo'
+    },
     Url : {
        AfterLogin: 'welcome'
     },

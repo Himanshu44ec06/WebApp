@@ -1,7 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import {Observable} from 'rxjs';
 import { GlobalVariable } from '../../global';
-
 import { User } from '../model/user';
 
 @Injectable({
@@ -15,8 +13,12 @@ export  class  AuthService {
     constructor() {
     }
 
-     getCurrentUser(): User| null {
+    getCurrentUser(): User| null {
         return  this.currentUser;
+    }
+
+    setCurrentUser(value: User) {
+        this.currentUser = value;
     }
 
     login(username: string, password: string) {
