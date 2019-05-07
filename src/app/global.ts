@@ -23,6 +23,7 @@ export const GlobalVariable  =  Object.freeze({
         UserNameRequire : 'User name is required.',
         PasswordRequire : 'Password is required.',
         InCorrectCred : 'Your email or password is incorrect.',
-        InValidLoginForm : 'Please enter valid username and password'
+        InValidLoginForm : 'Please enter valid username and password',
+        Manage: 'Manage'
     }
 });

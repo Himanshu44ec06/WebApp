@@ -8,6 +8,10 @@
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink='/products'>{{language.ProductList}}</a>
             </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
+                <a class="nav-link" routerLink='/products'>{{language.Manage}}</a>
+            </li>
+           
         </ul>
         <ul class="navbar-nav navbar-right">
             <li class="nav-item" *ngIf="isLoggedIn">
