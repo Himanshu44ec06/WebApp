@@ -8,11 +8,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const AdminRoute: Routes = [
-    { 
+    {
         path: '',
         component: ShellComponent,
         children: [
-             { path : '/ManageUser', component : UserListComponent}
+             { path : 'manageuser', component : UserListComponent}
         ]
     }
 ];
