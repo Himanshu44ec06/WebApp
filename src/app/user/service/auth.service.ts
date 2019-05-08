@@ -8,7 +8,7 @@ import { User } from '../model/user';
 export  class  AuthService {
 
     private currentUser: User | null;
-    redirectUrl: string;
+    redirectUrl: string = GlobalVariable.Url.AfterLogin; //  Default 
 
     constructor() {
     }
@@ -34,7 +34,6 @@ export  class  AuthService {
                     moduleId: 'token'
                 }]
             };
-            this.redirectUrl =  GlobalVariable.Url.AfterLogin;
         } else {
             this.currentUser = null;
             this.emptyRedirectUrl();

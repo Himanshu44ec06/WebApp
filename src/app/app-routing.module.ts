@@ -3,6 +3,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 
 import { PageNotFoundComponent } from './error';
 import { ShellComponent, WelcomeComponent } from './home';
+import { AuthGaurd } from './user/guard/auth.guard';
 
 const appRoutes: Routes = [
     {
@@ -13,6 +14,11 @@ const appRoutes: Routes = [
              {
                 path: 'user',
                 loadChildren: './user/user.module#UserModule'
+            },
+            {
+                path: 'admin',
+                canActivate: [AuthGaurd],
+                loadChildren : './admin/admin.module#AdminModule'
             },
              { path: '', redirectTo: 'welcome', pathMatch: 'full' },
         ]

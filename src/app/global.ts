@@ -6,7 +6,9 @@ export const GlobalVariable  =  Object.freeze({
         CURRENT_USER : 'UserInfo'
     },
     Url : {
-       AfterLogin: 'welcome'
+       AfterLogin: 'welcome',
+       LOGIN : '/user/login'
+
     },
     LanguageResourse : {
         CompanyName : 'Ishine',
@@ -24,6 +26,7 @@ export const GlobalVariable  =  Object.freeze({
         PasswordRequire : 'Password is required.',
         InCorrectCred : 'Your email or password is incorrect.',
         InValidLoginForm : 'Please enter valid username and password',
-        Manage: 'Manage'
+        Manage: 'Manage',
+        ManageUser: 'Manage User'
     }
 });
