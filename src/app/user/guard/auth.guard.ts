@@ -12,7 +12,6 @@ export class AuthGaurd implements  CanActivate {
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
         if (this.authService.isLoggedIn()) {
             return true;
-            
         }
         this.authService.redirectUrl = state.url;
         this.router.navigate([GlobalVariable.Url.LOGIN]);

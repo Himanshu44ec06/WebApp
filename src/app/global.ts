@@ -1,6 +1,8 @@
 export const GlobalVariable  =  Object.freeze({
     Store : {
-        UserModule : 'User'
+        UserModule : 'User',
+        ManagerUserModule : 'ManageUser',
+        AdminModule : 'Admin'
     },
     LocalStorage : {
         CURRENT_USER : 'UserInfo'

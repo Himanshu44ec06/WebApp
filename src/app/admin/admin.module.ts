@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
+import { StoreModule } from '@ngrx/store';
 
 import { ShellComponent, UserListComponent } from './index';
 import { Routes, RouterModule } from '@angular/router';
