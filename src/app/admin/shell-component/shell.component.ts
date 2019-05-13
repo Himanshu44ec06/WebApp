@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GlobalVariable} from '../../global';
+import { AuthService } from 'src/app/user/service/auth.service';
 
 @Component({
     templateUrl : './shell.component.html',
@@ -26,4 +27,13 @@ import { GlobalVariable} from '../../global';
 export class ShellComponent {
 
     language =  GlobalVariable.LanguageResourse;
+    roles  =  GlobalVariable.RolesKey;
+
+    constructor(private authService: AuthService) {
+
+    }
+
+    havePermission(role: string) : boolean {
+       return  this.authService.checkForPermission(role);
+    }
 }

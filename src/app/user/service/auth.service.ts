@@ -17,6 +17,13 @@ export  class  AuthService {
         return  this.currentUser;
     }
 
+    checkForPermission(roleId: string): boolean {
+        if(this.currentUser) {
+            return  !!this.currentUser.roles.find( p => p.moduleId === roleId);
+        }
+        return false;
+    }
+
     setCurrentUser(value: User) {
         this.currentUser = value;
     }
