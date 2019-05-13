@@ -42,10 +42,16 @@ export class UserLoginComponent implements OnInit, OnDestroy {
             const userName = loginForm.form.value.userName;
             const password = loginForm.form.value.password;
             this.authService.login(userName, password).subscribe(() => {
+                const currentUser =  this.authService.isLoggedIn();
+                if (currentUser) {
                 if (this.authService.redirectUrl) {
                     this.router.navigateByUrl(this.authService.redirectUrl);
                     this.errorMessage = '';
                 } else {
+                     this.router.navigateByUrl(GlobalVariable.Url.AfterLogin);
+                }
+            }
+                else {
                     this.errorMessage = GlobalVariable.LanguageResourse.InCorrectCred;
                 }
             });

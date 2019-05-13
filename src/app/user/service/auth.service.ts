@@ -23,20 +23,28 @@ export  class  AuthService {
 
     login(username: string, password: string) {
 
-        if (username !== 'wrong') {
-            this.currentUser = {
-                id: 2,
-                userName: username,
+        this.currentUser = {
+            id: 2,
+            userName: username,
+            token: 'authToken',
+            roles: []
+        };
+
+        switch(username) {
+            case 'wrong' :
+             this.currentUser = null; 
+             break;
+
+            case 'admin' : 
+            this.currentUser.roles.push({
+                id: 1,
                 token: 'authToken',
-                roles: [{
-                    id: 1,
-                    token: 'authToken',
-                    moduleId: 'token'
-                }]
-            };
-        } else {
-            this.currentUser = null;
-            this.emptyRedirectUrl();
+                moduleId: GlobalVariable.RolesKey.ManageUser
+            });
+            break;
+
+            default: 
+            break;
         }
         const  eventEmitter  =  new EventEmitter(true);
 
