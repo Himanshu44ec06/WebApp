@@ -4,6 +4,9 @@ export const GlobalVariable  =  Object.freeze({
         ManagerUserModule : 'ManageUser',
         AdminModule : 'Admin'
     },
+    RolesKey : {
+        ManageUser : 'ManageUser'
+    },
     LocalStorage : {
         CURRENT_USER : 'UserInfo'
     },

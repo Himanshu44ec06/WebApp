@@ -3,8 +3,9 @@ import { SharedModule } from '../shared/shared.module';
 
 import { StoreModule } from '@ngrx/store';
 
-import { ShellComponent, UserListComponent } from './index';
+import { ShellComponent } from './index';
 import { Routes, RouterModule } from '@angular/router';
+import { ManageUserAuthGuard } from './service/manageuser.auth';
 
 
 
@@ -13,7 +14,8 @@ const AdminRoute: Routes = [
         path: '',
         component: ShellComponent,
         children: [
-             { path : 'manageuser', component : UserListComponent}
+             { path : 'manageuser', canActivate:[ManageUserAuthGuard] ,
+             loadChildren : '../manageuser/manageuser.module#ManageUserModule'}
         ]
     }
 ];
@@ -24,10 +26,12 @@ const AdminRoute: Routes = [
         RouterModule.forChild(AdminRoute)
     ],
     exports : [],
-    providers: [],
+    providers: [
+        ManageUserAuthGuard
+    ],
     declarations: [
         ShellComponent,
-        UserListComponent
+
     ]
 })
 
