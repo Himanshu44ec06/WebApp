@@ -19,7 +19,7 @@ const routes: Routes = [
 @NgModule({
     imports : [
         SharedModule,
-        StoreModule.forFeature(GlobalVariable.Store.ManagerUserModule,reducer),
+        StoreModule.forFeature(GlobalVariable.Store.ManagerUserModule, reducer),
         EffectsModule.forFeature([ManageUserEffects]),
         RouterModule.forChild(routes),
     ],
