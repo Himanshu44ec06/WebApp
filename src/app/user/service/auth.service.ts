@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { GlobalVariable } from '../../global';
 import { User } from '../model/user';
+import { of, Observable } from 'rxjs';
 
 @Injectable({
     providedIn : 'root'
@@ -28,7 +29,7 @@ export  class  AuthService {
         this.currentUser = value;
     }
 
-    login(username: string, password: string) {
+    login(username: string, password: string): Observable<User> {
 
         this.currentUser = {
             id: 2,
@@ -53,13 +54,7 @@ export  class  AuthService {
             default: 
             break;
         }
-        const  eventEmitter  =  new EventEmitter(true);
-
-        setTimeout(() => {
-              eventEmitter.emit(this.currentUser);
-         }, 100);
-
-        return  eventEmitter;
+       return  of(this.currentUser);
     }
 
     isLoggedIn(): boolean {

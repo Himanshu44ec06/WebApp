@@ -8,6 +8,7 @@ import {  EffectsModule } from '@ngrx/effects';
 import { ManageUserEffects } from './state/state.effects';
 
 import { UserListComponent } from './index';
+import { ManageUserService } from './service/ManageUser.service';
 
 const routes: Routes = [
     { path : '', component : UserListComponent}
@@ -17,14 +18,16 @@ const routes: Routes = [
     imports : [
         SharedModule,
         StoreModule.forFeature(GlobalVariable.Store.ManagerUserModule,{}),
-        //EffectsModule.forFeature([ManageUserEffects]),
+        EffectsModule.forFeature([ManageUserEffects]),
         RouterModule.forChild(routes),
     ],
     declarations : [
         UserListComponent
     ],
     exports : [],
-    providers: []
+    providers: [
+        ManageUserService
+    ]
 })
 export class ManageUserModule {
 }

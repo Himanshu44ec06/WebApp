@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, EventEmitter } from '@angular/core';
+import { Observable,of } from 'rxjs';
 import { UserModel } from '../model/UserModel';
 
 @Injectable()
@@ -10,6 +10,8 @@ export class ManageUserService {
     }
 
     getUsers(): Observable<UserModel[]> {
-        return null;
+        const  listOfUser: UserModel[]  = [];
+        return of(listOfUser);
+        
     }
 }
