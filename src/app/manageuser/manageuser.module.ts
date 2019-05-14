@@ -7,6 +7,8 @@ import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
 import { ManageUserEffects } from './state/state.effects';
 
+import {reducer} from './state/state.reducer';
+
 import { UserListComponent } from './index';
 import { ManageUserService } from './service/ManageUser.service';
 
@@ -17,7 +19,7 @@ const routes: Routes = [
 @NgModule({
     imports : [
         SharedModule,
-        StoreModule.forFeature(GlobalVariable.Store.ManagerUserModule,{}),
+        StoreModule.forFeature(GlobalVariable.Store.ManagerUserModule,reducer),
         EffectsModule.forFeature([ManageUserEffects]),
         RouterModule.forChild(routes),
     ],

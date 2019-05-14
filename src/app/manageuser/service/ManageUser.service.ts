@@ -12,6 +12,5 @@ export class ManageUserService {
     getUsers(): Observable<UserModel[]> {
         const  listOfUser: UserModel[]  = [];
         return of(listOfUser);
-        
     }
 }

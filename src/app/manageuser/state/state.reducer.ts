@@ -1,5 +1,5 @@
 import { UserModel } from '../model/UserModel';
-import { ManageUserActions } from './state.actions';
+import { ManageUserActions, ManageUserActionTypes } from './state.actions';
 
 // State for this feature (ManageUser)
 export interface ManageUserState  {
@@ -17,6 +17,20 @@ const initialState: ManageUserState = {
 
 export  function reducer(state = initialState, actions: ManageUserActions): ManageUserState {
     switch (actions.type) {
+        case  ManageUserActionTypes.LoadSuccess :
+            return  {
+                ...state,
+                users : actions.payload,
+                error : ''
+            };
+            break;
+        case  ManageUserActionTypes.LoadFail :
+         return  {
+             ...state,
+             users : [],
+             error : actions.payload
+         };
+         break;
 
         default:
           return state;
