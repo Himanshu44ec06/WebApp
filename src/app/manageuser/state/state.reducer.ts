@@ -23,14 +23,12 @@ export  function reducer(state = initialState, actions: ManageUserActions): Mana
                 users : actions.payload,
                 error : ''
             };
-            break;
         case  ManageUserActionTypes.LoadFail :
          return  {
              ...state,
              users : [],
              error : actions.payload
          };
-         break;
 
         default:
           return state;

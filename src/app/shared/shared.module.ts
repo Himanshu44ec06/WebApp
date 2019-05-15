@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import  { ModalPopupComponent }  from  './component';
+
 @NgModule({
   imports: [
     CommonModule
@@ -10,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  declarations : [
+     ModalPopupComponent
+  ],
 })
 export class SharedModule { }
