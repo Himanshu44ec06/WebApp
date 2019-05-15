@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../model/UserModel';
-import  * as fromStore from  '../state/state.reducer';
-import  * as  actions  from '../state/state.actions';
-import  * as  state from  '../state';
+import * as fromStore from '../state/state.reducer';
+import * as  actions from '../state/state.actions';
+import * as  state from '../state';
 import { Store, select } from '@ngrx/store';
 
 
@@ -21,8 +21,9 @@ export class  UserListComponent implements  OnInit {
     ngOnInit() {
         this.store.dispatch(new actions.Load());
 
-          this.store.pipe(select(state.getUsers)).subscribe((user)=> {
+        this.store.pipe(select(state.getUsers)).subscribe((user) => {
                 this.UserList = user;
+                this.FilterUserList = this.UserList.slice(0);
                 console.log(user);
           });
     }

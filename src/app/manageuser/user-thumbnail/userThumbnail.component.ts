@@ -3,7 +3,7 @@ import { UserModel } from '../model/UserModel';
 
 @Component({
     selector : '<pm-user></pm-user>',
-    templateUrl : ''
+    templateUrl : './userThumbnail.component.html'
 })
 export class UserThumbnailComponent {
 

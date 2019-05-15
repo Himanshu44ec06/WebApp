@@ -24,7 +24,6 @@ export class  ManageUserAuthGuard implements CanActivate {
 
     private _navigateToLoginPage() {
         this.authService.logout();
-        
         this.router.navigateByUrl(GlobalVariable.Url.LOGIN);
     }
 

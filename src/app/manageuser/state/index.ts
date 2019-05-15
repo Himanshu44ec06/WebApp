@@ -6,7 +6,9 @@ import * as fromFeature from '../state/state.reducer';
 import { GlobalVariable } from '../../global';
 
 
-
+export interface State extends fromRoot.State {
+    ManageUser: fromFeature.ManageUserState;
+}
 
 // Select Feature
 const getFeatureState = createFeatureSelector<fromFeature.ManageUserState>(GlobalVariable.Store.ManagerUserModule);

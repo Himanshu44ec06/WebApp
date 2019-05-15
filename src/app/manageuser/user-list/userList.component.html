@@ -1,1 +1,16 @@
-{{UserList}}
+<div class="row">
+        <div class="col-sm-6" *ngFor="let user of FilterUserList">
+            <pm-card> 
+                <div card-title>
+                    <h3>{{user.Username}}</h3>
+                </div>
+                <div card-body>
+
+                </div>
+                <div card-footer>
+                        <a  class="btn btn-primary">Edit</a>
+                        <a  class="btn btn-primary">Delete</a>
+                </div>
+            </pm-card>
+        </div>
+</div>

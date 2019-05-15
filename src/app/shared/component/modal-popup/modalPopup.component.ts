@@ -15,7 +15,7 @@ export class  ModalPopupComponent  implements  OnInit {
     @Input('positive-label') positiveLabel: string;
 
 
-    @Output() closeAction = new EventEmitter();
+    @Output('closeAction') closeAction = new EventEmitter();
     @Output('loaded') loadedEmitter= new EventEmitter();
 
     cancelAction(){

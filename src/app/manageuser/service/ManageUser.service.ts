@@ -5,12 +5,25 @@ import { UserModel } from '../model/UserModel';
 @Injectable()
 export class ManageUserService {
 
-    constructor() {
+    listOfUser: UserModel[] = [
+        {
+        Id: 1,
+        password : '',
+        Username: 'testuser',
+        Email: 'test@email.com',
+        Status: 1,
+        Roles : [{
+            Id: 1,
+            Role : 'Admin'
+        }]
 
+    }
+];
+
+    constructor() {
     }
 
     getUsers(): Observable<UserModel[]> {
-        const  listOfUser: UserModel[]  = [];
-        return of(listOfUser);
+        return of(this.listOfUser);
     }
 }
