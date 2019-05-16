@@ -9,11 +9,11 @@ import { ManageUserEffects } from './state/state.effects';
 
 import {reducer} from './state/state.reducer';
 
-import { UserListComponent } from './index';
+import { UserListComponent,ShellComponent } from './index';
 import { ManageUserService } from './service/ManageUser.service';
 
 const routes: Routes = [
-    { path : '', component : UserListComponent}
+    { path : '', component : ShellComponent}
 ];
 
 @NgModule({
@@ -24,7 +24,8 @@ const routes: Routes = [
         RouterModule.forChild(routes),
     ],
     declarations : [
-        UserListComponent
+        UserListComponent,
+        ShellComponent
     ],
     exports : [],
     providers: [
