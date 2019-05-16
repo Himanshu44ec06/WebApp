@@ -7,6 +7,7 @@ import { Store, select } from '@ngrx/store';
 
 
 @Component({
+    selector : 'user-list',
      templateUrl: './userList.component.html'
 })
 
