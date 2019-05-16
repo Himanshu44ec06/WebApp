@@ -26,8 +26,12 @@ export class UserLoginComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+       if (this.authService.isLoggedIn()) {
+          this.redirect();
+       } else {
        this.store.pipe(select(fromUser.getMaskUserName))
        .subscribe((maskUserName) => this.maskUserName =  maskUserName);
+       }
     }
     ngOnDestroy() {
         this.componentActive =  false;
@@ -44,14 +48,8 @@ export class UserLoginComponent implements OnInit, OnDestroy {
             this.authService.login(userName, password).subscribe(() => {
                 const currentUser =  this.authService.isLoggedIn();
                 if (currentUser) {
-                if (this.authService.redirectUrl) {
-                    this.router.navigateByUrl(this.authService.redirectUrl);
-                    this.errorMessage = '';
+                    this.redirect();
                 } else {
-                     this.router.navigateByUrl(GlobalVariable.Url.AfterLogin);
-                }
-            }
-                else {
                     this.errorMessage = GlobalVariable.LanguageResourse.InCorrectCred;
                 }
             });
@@ -60,6 +58,14 @@ export class UserLoginComponent implements OnInit, OnDestroy {
           }
     }
 
+    redirect(): void {
+        if (this.authService.redirectUrl) {
+            this.router.navigateByUrl(this.authService.redirectUrl);
+            this.errorMessage = '';
+        } else {
+             this.router.navigateByUrl(GlobalVariable.Url.AfterLogin);
+        }
+    }
 
     cancel() {
 

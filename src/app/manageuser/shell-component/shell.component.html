@@ -1,9 +1,8 @@
 
           <nav class="navbar navbar-light bg-light justify-content-between">
                 <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  <input class="form-control mr-sm-2" [(ngModel)]="searchString" name="searchString" type="search" placeholder="Search" aria-label="Search">
                 </form>
            </nav>
 
-<user-list></user-list>
+<user-list [UserList]="UserList" [FilterBy]="searchString"></user-list>

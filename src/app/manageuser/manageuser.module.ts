@@ -9,7 +9,7 @@ import { ManageUserEffects } from './state/state.effects';
 
 import {reducer} from './state/state.reducer';
 
-import { UserListComponent,ShellComponent } from './index';
+import { UserListComponent, ShellComponent, CreateUserComponent } from './index';
 import { ManageUserService } from './service/ManageUser.service';
 
 const routes: Routes = [
@@ -25,7 +25,8 @@ const routes: Routes = [
     ],
     declarations : [
         UserListComponent,
-        ShellComponent
+        ShellComponent,
+        CreateUserComponent
     ],
     exports : [],
     providers: [
