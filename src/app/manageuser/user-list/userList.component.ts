@@ -28,6 +28,16 @@ export class  UserListComponent implements  OnInit {
           });
     }
 
+    filterList(value: string) {
+        if (value.length > 2) {
+            this.FilterUserList = this.FilterUserList.filter((f)=>{
+                return f.Username.toLowerCase().indexOf(value.toLowerCase()) > -1;
+            });
+        } else {
+            this.FilterUserList =  this.UserList.slice(0);
+        }
+    }
+
 
 
 
