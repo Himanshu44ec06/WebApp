@@ -3,6 +3,7 @@ import { GlobalVariable } from '../../global';
 import { AuthService } from 'src/app/user/service/auth.service';
 import { LocalStorageService } from 'src/app/shared/service/LocalStorage.service';
 import { User } from 'src/app/user/model/user';
+import { Router } from '@angular/router';
 @Component({
 // tslint:disable-next-line: component-selector
     selector: 'pm-nav',
@@ -10,9 +11,12 @@ import { User } from 'src/app/user/model/user';
 })
 export  class  NavComponent implements OnInit {
     language =  GlobalVariable.LanguageResourse;
+    roles =  GlobalVariable.RolesKey;
+    loginPage: string = GlobalVariable.Url.LOGIN;
 
     constructor(private authService: AuthService,
-                private localStorage: LocalStorageService
+                private localStorage: LocalStorageService,
+                private route:  Router
         ) {
 
     }
@@ -41,7 +45,12 @@ export  class  NavComponent implements OnInit {
 
     logOut(): void  {
         this.authService.logout();
+        this.route.navigateByUrl(this.loginPage)
     }
+
+    havePermission(role: string) : boolean {
+        return  this.authService.checkForPermission(role);
+     }
 
     // Private Functions
     readUserFromLocalStorage() {

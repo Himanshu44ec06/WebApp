@@ -10,6 +10,7 @@ export  class  AuthService {
 
     private currentUser: User | null;
     redirectUrl: string = GlobalVariable.Url.AfterLogin; //  Default 
+    
 
     constructor() {
     }

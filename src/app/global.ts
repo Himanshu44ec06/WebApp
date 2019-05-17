@@ -5,7 +5,8 @@ export const GlobalVariable  =  Object.freeze({
         AdminModule : 'Admin'
     },
     RolesKey : {
-        ManageUser : 'ManageUser'
+        ManageUser : 'ManageUser',
+        EndUser : 'EndUser'
     },
     LocalStorage : {
         CURRENT_USER : 'UserInfo'
@@ -13,6 +14,7 @@ export const GlobalVariable  =  Object.freeze({
     Url : {
        AfterLogin: 'welcome',
        LOGIN : '/user/login'
+       
 
     },
     LanguageResourse : {
@@ -32,6 +34,8 @@ export const GlobalVariable  =  Object.freeze({
         InCorrectCred : 'Your email or password is incorrect.',
         InValidLoginForm : 'Please enter valid username and password',
         Manage: 'Manage',
-        ManageUser: 'Manage User'
+        ManageUser: 'Manage User',
+        Profile: 'Profile',
+        ChangePassword: 'ChangePassword'
     }
 });
