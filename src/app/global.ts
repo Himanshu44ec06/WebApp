@@ -6,6 +6,10 @@ export const GlobalVariable  =  Object.freeze({
     },
     RolesKey : {
         ManageUser : 'ManageUser',
+        ManageVendor : 'ManageVendor',
+        VendorBooking: 'ManageVendorBooking',
+        ManageContent: 'ManageContent',
+        DashBoard: 'DashBoard',
         EndUser : 'EndUser'
     },
     LocalStorage : {
@@ -14,10 +18,13 @@ export const GlobalVariable  =  Object.freeze({
     Url : {
        AfterLogin: 'welcome',
        LOGIN : '/user/login'
-       
-
     },
     LanguageResourse : {
+        ManageVendor : 'Manage Vendor',
+        ManageVendorBooking : 'Manage VendorBooking',
+        ManageContent : 'Manage Content',
+        DashBoard : 'DashBoard',
+        EndUser : 'EndUser',
         CompanyName : 'Ishine',
         Home : 'Home',
         ProductList : 'Product List',
@@ -36,6 +43,7 @@ export const GlobalVariable  =  Object.freeze({
         Manage: 'Manage',
         ManageUser: 'Manage User',
         Profile: 'Profile',
-        ChangePassword: 'ChangePassword'
+        ChangePassword: 'ChangePassword',
+        Add: 'ADD'
     }
 });

@@ -51,11 +51,8 @@ export  class  AuthService {
                 moduleId: GlobalVariable.RolesKey.ManageUser
             });
             break;
-
-            default: 
-            break;
         }
-       return  of(this.currentUser);
+        return of(this.currentUser);
     }
 
     isLoggedIn(): boolean {

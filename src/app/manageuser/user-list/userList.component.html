@@ -1,16 +1,36 @@
 <div class="row">
-        <div class="col-sm-4" *ngFor="let user of filterUserList">
-            <pm-card> 
+        <div class="col-sm-3" *ngFor="let user of filterUserList">
+             <pm-card [card-class]="setClass(user)"> 
                 <div card-title>
-                    <h5>{{user.Username}}</h5>
+                    <h6>{{user.Username}}</h6>
                 </div>
                 <div card-body>
+                      {{user| json}}
 
+                      <form >
+                        <div class="form-group">
+                          <label for="email">Email address:</label>
+                          <!-- <input type="email" class="form-control" id="email"> -->
+                          <label class="form-control">{{user.Email}}</label>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="email">Roles:</label>
+                           <div class="chechbox" *ngFor="let role of Roles">
+                                   {{checkRoleExist(user.Roles,role)}}
+                                <label><input [checked]="checkRoleExist(user.Roles,role)" type="checkbox">{{role.Text}}</label>
+                           </div>
+                           
+                        </div>
+                        
+                      </form>
                 </div>
                 <div card-footer>
                         <a  class="btn"> <span class="glyphicon glyphicon-pencil"></span></a>
                         <a  class="btn"><span class="glyphicon glyphicon-trash"></span></a>
                 </div>
             </pm-card>
+
+            
         </div>
 </div>
