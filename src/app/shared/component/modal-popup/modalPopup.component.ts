@@ -20,16 +20,17 @@ export class  ModalPopupComponent  implements  OnInit {
     @Input('positive-label') positiveLabel: string;
 
 
+// tslint:disable-next-line: no-output-rename
     @Output('closeAction') closeAction = new EventEmitter();
-    @Output('loaded') loadedEmitter= new EventEmitter();
+// tslint:disable-next-line: no-output-rename
+    @Output('loaded') loadedEmitter = new EventEmitter();
 
-    cancelAction(){
+    cancelAction() {
         this.showModal =  false;
         this.closeAction.next();
     }
 
-    ngOnInit(){
-        
+    ngOnInit() {
         this.loadedEmitter.next();
     }
 }

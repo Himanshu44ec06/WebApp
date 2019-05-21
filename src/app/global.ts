@@ -9,6 +9,7 @@ export const GlobalVariable  =  Object.freeze({
         ManageVendor : 'ManageVendor',
         VendorBooking: 'ManageVendorBooking',
         ManageContent: 'ManageContent',
+        Vendor : 'Vendor',
         DashBoard: 'DashBoard',
         EndUser : 'EndUser'
     },
@@ -33,6 +34,7 @@ export const GlobalVariable  =  Object.freeze({
         Welcome: 'Welcome',
         UserNameLabel: 'User Name',
         PasswordLabel: 'Password',
+        Email  : 'Email',
         LogInButton: 'Log In',
         CancelButton: 'Cancel',
         MarkUserName : 'Mask user name',
@@ -44,6 +46,12 @@ export const GlobalVariable  =  Object.freeze({
         ManageUser: 'Manage User',
         Profile: 'Profile',
         ChangePassword: 'ChangePassword',
-        Add: 'ADD'
+        Add: 'ADD',
+        Cancel  : 'Cancel',
+        Delete : 'Delete',
+        Close : 'Close',
+        Confirmation : 'Confirmation',
+        DeleteConfirmationMessage : 'Sure, you  want to delete ?',
+        Create : 'Create'
     }
 });

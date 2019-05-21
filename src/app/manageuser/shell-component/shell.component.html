@@ -12,6 +12,25 @@
     <div class="col-md-4"></div>
 </div>
 
-<pm-modal ></pm-modal>
-<user-list [UserList]="UserList"  [FilterBy]="searchString"></user-list>
+<pm-modal [title]="language.Confirmation" (closeAction)="closeDeletePopup()" [show-modal]="ShowDeletePopup">
+     <div modal-body>
+       <span>{{language.DeleteConfirmationMessage}}</span>
+     </div>
+     <div modal-footer>
+        <button (click)="closeDeletePopup()" type="button" class="btn btn-secondary" >{{language.Close}}</button>
+        <button (click)="deleteUser()" type="button" class="btn btn-primary" >{{language.Delete}}</button>
+     </div>
+</pm-modal>
+
+<pm-modal [title]="language.Confirmation" (closeAction)="closeDeletePopup()" [show-modal]="ShowDeletePopup">
+    <div modal-body>
+      <span>{{language.DeleteConfirmationMessage}}</span>
+    </div>
+    <div modal-footer>
+       <button (click)="closeDeletePopup()" type="button" class="btn btn-secondary" >{{language.Close}}</button>
+       <button (click)="deleteUser()" type="button" class="btn btn-primary" >{{language.Delete}}</button>
+    </div>
+</pm-modal>
+
+<user-list [UserList]="UserList" (DeleteUser)="DeleteUserClicked($event)"  [FilterBy]="searchString"></user-list>
 </div>

@@ -17,6 +17,7 @@ export class  ShellComponent implements OnInit {
     searchString = '';
     UserList: UserModel[] = [];
     language = GlobalVariable.LanguageResourse;
+    ShowDeletePopup =  false;
     constructor(private store: Store<fromStore.ManageUserState>) {
 
     }
@@ -27,6 +28,23 @@ export class  ShellComponent implements OnInit {
         this.store.pipe(select(state.getUsers)).subscribe((userList) => {
             this.UserList  =  userList.splice(0);
         });
+    }
+
+    closeDeletePopup(): void {
+            this.ShowDeletePopup =  false;
+    }
+
+    showDeletePopUp(): void {
+          this.ShowDeletePopup =  true;
+    }
+
+    deleteUser(): void {
+         console.log('user Deleted');
+    }
+
+    DeleteUserClicked(event): void {
+        this.ShowDeletePopup =  true;
+        console.log(event);
     }
 
 }

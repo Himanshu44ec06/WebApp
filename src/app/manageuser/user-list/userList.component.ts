@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { UserModel } from '../model/UserModel';
 import { GlobalVariable } from 'src/app/global';
-import { Roles } from 'src/app/user/model/user';
+
+
 
 
 @Component({
@@ -32,6 +33,9 @@ export class  UserListComponent implements OnChanges  {
 
   @Input()  FilterBy: string;
   @Input() UserList: UserModel[];
+
+// tslint:disable-next-line: no-output-rename
+  @Output('DeleteUser') deletUserEmitter = new EventEmitter();;
   filterUserList: UserModel[];
 
   ngOnChanges(): void {
@@ -55,8 +59,12 @@ export class  UserListComponent implements OnChanges  {
     }
   }
 
-  checkRoleExist(roles: Roles[], role: any): boolean {
-            return  !!roles.find((f) => f.id  === role.Id);
+  checkRoleExist(roles, role): boolean {
+    return  !!roles.find((f) => f.Role  === role.Role);
+  }
+
+  emitDeleteUser(user: UserModel) {
+         this.deletUserEmitter.emit(user.Id.toString());
   }
 
 }
