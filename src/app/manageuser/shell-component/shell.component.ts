@@ -9,18 +9,28 @@ import * as  state from '../state';
 import { Store, select } from '@ngrx/store';
 
 
+
 @Component({
     templateUrl : './shell.component.html'
 })
 
 export class  ShellComponent implements OnInit {
+    
+    constructor(private store: Store<fromStore.ManageUserState>) {
+
+    }
+
+    Mode = {
+        ADD : 'ADD',
+        List : 'List',
+        Edit : 'Edit',
+    };
+
     searchString = '';
     UserList: UserModel[] = [];
     language = GlobalVariable.LanguageResourse;
     ShowDeletePopup =  false;
-    constructor(private store: Store<fromStore.ManageUserState>) {
-
-    }
+    mode =  this.Mode.List;
 
     ngOnInit() {
         this.store.dispatch(new actions.Load());
@@ -28,6 +38,10 @@ export class  ShellComponent implements OnInit {
         this.store.pipe(select(state.getUsers)).subscribe((userList) => {
             this.UserList  =  userList.splice(0);
         });
+    }
+
+    cancelAddMode(): void {
+        this.mode =  this.Mode.List;
     }
 
     closeDeletePopup(): void {
@@ -48,3 +62,4 @@ export class  ShellComponent implements OnInit {
     }
 
 }
+

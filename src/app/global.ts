@@ -21,6 +21,7 @@ export const GlobalVariable  =  Object.freeze({
        LOGIN : '/user/login'
     },
     LanguageResourse : {
+        Search: 'Search',
         ManageVendor : 'Manage Vendor',
         ManageVendorBooking : 'Manage VendorBooking',
         ManageContent : 'Manage Content',
@@ -50,6 +51,7 @@ export const GlobalVariable  =  Object.freeze({
         Cancel  : 'Cancel',
         Delete : 'Delete',
         Close : 'Close',
+        UserRoles : 'Roles' ,
         Confirmation : 'Confirmation',
         DeleteConfirmationMessage : 'Sure, you  want to delete ?',
         Create : 'Create'

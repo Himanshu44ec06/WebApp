@@ -1,34 +1,29 @@
-<div class="row">
-        <div class="col-sm-3" *ngFor="let user of filterUserList">
-             <pm-card [card-class]="setClass(user)"> 
-                <div card-title>
-                    <h6>{{user.Username}}</h6>
-                    
-                </div>
-                <div card-body>
-                      <form >
-                        <div class="form-group">
-                          <label for="email">{{language.Email}}:</label>
-                          <!-- <input type="email" class="form-control" id="email"> -->
-                          <label class="form-control">{{user.Email}}</label>
-                        </div>
-                        
-                        <div class="form-group">
-                          <label for="email">{{language.Roles}}:</label>
-                           <div class="chechbox" *ngFor="let role of Roles">
-                                <label><input [checked]="checkRoleExist(user.Roles,role)" type="checkbox">{{role.Text}}</label>
-                           </div>
-                           
-                        </div>
-                        
-                      </form>
-                </div>
-                <div card-footer>
-                        <a  class="btn"> <span class="glyphicon glyphicon-pencil"></span></a>
-                        <a   (click)="emitDeleteUser(user)" class="btn"><span class="glyphicon glyphicon-trash"></span></a>
-                </div>
-            </pm-card>
 
-            
-        </div>
-</div>
+<table mdbTable hover="true" striped="true" [hidden]="filterUserList.length<1">
+    <thead>
+      <tr>
+        <th  scope="col">
+
+        </th>
+        <th  scope="col">{{language.UserNameLabel}}</th>
+        <th  scope="col">{{language.Email}}</th>
+        <th  scope="col">{{language.UserRoles}}</th>
+        <th  scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let el of filterUserList">
+        <th>
+            <img [src]="constant.NoImageURL" style="width:30px;"  alt="UserName">
+        </th>
+        <td>{{el.Username}}</td>
+        <td>{{el.Email}}</td>
+        <td><span *ngFor="let role of el.Roles" class="badge badge-pill badge-default align-middle">{{role.Role}}</span></td>
+        <td>
+            <button  class="btn btn-sm btn-primary" (click)="emitDeleteUser(el)"><i class="fas fa-edit"></i></button>
+          <button  class="btn btn-sm btn-primary" (click)="emitDeleteUser(el)"><i class="fas fa-edit"></i></button>
+          <button (click)="emitEditUser(el)"  class="btn btn-sm btn-primary"><i class="far fa-trash-alt"></i></button>
+            </td>
+      </tr>
+    </tbody>
+  </table>

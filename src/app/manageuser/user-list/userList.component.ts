@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { UserModel } from '../model/UserModel';
 import { GlobalVariable } from 'src/app/global';
-
+import { Constant } from '../../constant';
 
 
 
@@ -13,29 +13,17 @@ import { GlobalVariable } from 'src/app/global';
 
 export class  UserListComponent implements OnChanges  {
 
-  private readonly role = GlobalVariable.RolesKey;
   private readonly language  =  GlobalVariable.LanguageResourse;
-
-  private readonly panelclass = {
-      1 : 'primary-default',
-      2 : 'panel-warning',
-      3 : 'panel-danger'
-  };
-
-  private readonly  Roles = [
-    {Id: 1, Role : this.role.ManageUser, Text : this.language.ManageUser },
-    {Id: 2, Role : this.role.ManageVendor, Text: this.language.ManageVendor},
-    {Id: 3, Role : this.role.VendorBooking, Text : this.language.ManageVendorBooking},
-    {Id: 4, Role : this.role.ManageContent, Text : this.language.ManageContent},
-    {Id: 5, Role : this.role.DashBoard, Text : this.language.DashBoard},
-    {Id: 6, Role : this.role.EndUser, Text : this.language.EndUser}
-  ];
+  private readonly  constant  = Constant;
 
   @Input()  FilterBy: string;
   @Input() UserList: UserModel[];
 
 // tslint:disable-next-line: no-output-rename
-  @Output('DeleteUser') deletUserEmitter = new EventEmitter();;
+  @Output('DeleteUser') deleteUserEmitter = new EventEmitter();
+// tslint:disable-next-line: no-output-rename
+  @Output('EditUser') editUserEmitter = new EventEmitter();
+
   filterUserList: UserModel[];
 
   ngOnChanges(): void {
@@ -44,9 +32,6 @@ export class  UserListComponent implements OnChanges  {
     }
   }
 
-  setClass(user: UserModel): string {
-    return this.panelclass[user.Status];
-  }
 
   filterby() {
     const value = this.FilterBy;
@@ -59,12 +44,13 @@ export class  UserListComponent implements OnChanges  {
     }
   }
 
-  checkRoleExist(roles, role): boolean {
-    return  !!roles.find((f) => f.Role  === role.Role);
-  }
 
   emitDeleteUser(user: UserModel) {
-         this.deletUserEmitter.emit(user.Id.toString());
+    this.deleteUserEmitter.emit(user);
+  }
+
+  emitEditUser(user: UserModel) {
+    this.editUserEmitter.emit(user);
   }
 
 }
