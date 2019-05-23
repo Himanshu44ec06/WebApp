@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { StoreModule} from '@ngrx/store';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { EffectsModule } from '@ngrx/effects';
 
 import { ShellComponent, NavComponent, WelcomeComponent } from './home';
@@ -26,6 +27,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    MDBBootstrapModule.forRoot(),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       name: 'APM Demo App DevTools',
@@ -34,6 +36,7 @@ import { environment } from 'src/environments/environment';
     }),
     EffectsModule.forRoot([])
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
     InterceptorsProviders
   ],

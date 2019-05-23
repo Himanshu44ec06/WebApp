@@ -1,63 +1,64 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand">{{language.CompanyName}}</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink='/welcome'>{{ language.Home}}</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink='/products'>{{language.ProductList}}</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active" *ngIf="isLoggedIn">
-                <a class="nav-link" routerLink='/admin'>{{language.Manage}}</a>
-            </li>
-           
-        </ul>
-        <ul class="navbar-nav navbar-right">
-            <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" [routerLink]="['/user/login']">{{language.welcome}} {{ userName }}</a>
-            </li>
-            <li class="nav-item" *ngIf="!isLoggedIn">
-                <a class="nav-link" [routerLink]="['/user/login']">{{language.LogIn}}</a>
-            </li>
-            <li class="nav-item" *ngIf="isLoggedIn">
-                <a class="nav-link" (click)="logOut()" style="cursor: pointer">{{language.LogOut}}</a>
-            </li>
-        </ul>
-    </div>
-</nav> -->
+  <!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" routerLink='/welcome'>{{language.CompanyName}}</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a routerLink='/welcome'>{{ language.Home}}</a></li>
-        
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" *ngIf="!havePermission(roles.EndUser) && isLoggedIn">{{language.Manage}}
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a *ngIf="havePermission(roles.ManageUser)" routerLink='/admin/manageuser'>{{language.ManageUser}}</a></li>
-              
-            </ul>
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" >Navbar</a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
           </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        
-        <li><a  *ngIf="!isLoggedIn" [routerLink]="['/user/login']"><span class="glyphicon glyphicon-log-in"></span> {{language.LogIn}}</a></li>
-        
-        <li *ngIf="isLoggedIn" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{language.welcome}} {{ userName }}
-            <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a>{{language.Profile}}</a></li>
-              <li><a>{{language.ChangePassword}}</a></li>
-              <hr>
-              <li><a (click)="logOut()" style="cursor: pointer">{{language.LogOut}}</a></li>
-            </ul>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">{{language.Manage}}</a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" >{{language.ManageUser}}</a>
+            </div>
           </li>
+  
       </ul>
-    </div>
-  </nav>
+      <!-- Links -->
+  
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+       
+          <li>
+              <a *ngIf="!isLoggedIn" class="btn btn-info btn-rounded btn-sm waves-effect waves-light"  [routerLink]="['/user/login']" data-toggle="modal" data-target="#navbarLogin">{{language.LogIn}}
+                  <i class="fas fa-sign-in-alt ml-2"></i>
+                </a>
+            </li>
+
+            <li class="nav-item" *ngIf="isLoggedIn" >
+          <a class="nav-link">
+            <div class="btn-group" mdbDropdown>
+              <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon> 
+              <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+               
+                
+                <li><a class="dropdown-item">{{language.Profile}}</a></li>
+              <li><a class="dropdown-item">{{language.ChangePassword}}</a></li>
+                <div class="divider dropdown-divider"></div>
+                <a class="dropdown-item" (click)="logOut()" >{{language.LogOut}}</a>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->
