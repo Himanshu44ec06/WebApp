@@ -8,25 +8,36 @@
   
     <mdb-card-body class="px-lg-5 pt-0">
   
-      <form class="text-center" style="color: #757575;" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <form novalidate  #CreateForm="ngForm" class="text-center" style="color: #757575;"  (ngSubmit)="onSubmit(CreateForm)">
   
         <div class="md-form mt-3">
-          <input type="text" formControlName="Username" id="materialFormUserName" class="form-control"
+          <input [(ngModel)]="Username"   required type="text"  
+          id="Username" name="Username" class="form-control" 
             mdbInput>
-          <label for="materialFormUserName">{{language.UserNameLabel}}</label>
+          <label for="Username">{{language.UserNameLabel}}</label>
         </div>
-  
+         
         <div class="md-form">
-          <input type="email" formControlName="Email"  id="materialFormEmail" class="form-control"
+          <input type="email" [(ngModel)]="Email" required  id="Email" name="Email" class="form-control"
             mdbInput>
-          <label for="materialFormEmail">{{language.Email}}</label>
+            <label for="Email" data-error="wrong" data-success="right">Type your email</label>
+         
         </div>
 
-        <span>{{language.Roles}}</span>
+
+
+        <span>{{language.UserRoles}}</span>
       <div class="row">
         <div class="col-md-12 mx-auto">
-          <mdb-select formControlName="Roles" 
-          [options]="optionsSelect" placeholder="Choose your option"></mdb-select>
+            <ng-multiselect-dropdown
+            name = "selectedItems"
+            [placeholder]="language.SelectRoles"
+            [data]="dropdownList"
+            [(ngModel)]="selectedItems"
+            [settings]="dropdownSettings"
+            
+          >
+          </ng-multiselect-dropdown>
 
          
         </div>
@@ -35,7 +46,9 @@
         
   
         <div class="row">
-            <button mdbBtn type="button" [disabled]="disabledSubmitButton" 
+          
+            <button mdbBtn type="submit" [disabled]="!CreateForm.valid &&  selectedItems.length < 1"
+            
             class="z-depth-0 my-4 waves-effect" color="primary" mdbWavesEffect>{{language.Create}}</button>
             <button mdbBtn type="button" 
             class="z-depth-0 my-4 waves-effect" color="primary" (click)="cancel()" mdbWavesEffect>{{language.Cancel}}</button>

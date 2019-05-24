@@ -2,6 +2,8 @@ import { NgModule ,NO_ERRORS_SCHEMA } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 import { GlobalVariable } from '../global';
 import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
@@ -23,6 +25,7 @@ const routes: Routes = [
         SharedModule,
         StoreModule.forFeature(GlobalVariable.Store.ManagerUserModule, reducer),
         EffectsModule.forFeature([ManageUserEffects]),
+        NgMultiSelectDropDownModule.forRoot(),
         RouterModule.forChild(routes),
         MDBBootstrapModule.forRoot()
     ],

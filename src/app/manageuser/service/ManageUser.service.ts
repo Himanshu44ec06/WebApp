@@ -22,4 +22,9 @@ export class ManageUserService {
     getUsers(): Observable<UserModel[]> {
         return of(this.listOfUser);
     }
+
+    createUser(user: UserModel): Observable<UserModel> {
+        user.Id = this.listOfUser.length + 1;
+            return  of(user);
+    }
 }

@@ -54,6 +54,7 @@ export const GlobalVariable  =  Object.freeze({
         UserRoles : 'Roles' ,
         Confirmation : 'Confirmation',
         DeleteConfirmationMessage : 'Sure, you  want to delete ?',
-        Create : 'Create'
+        Create : 'Create',
+        SelectRoles: 'Select Roles'
     }
 });

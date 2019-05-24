@@ -30,6 +30,19 @@ export  function reducer(state = initialState, actions: ManageUserActions): Mana
              error : actions.payload
          };
 
+        case ManageUserActionTypes.CreateUserSuccess : 
+           return  {
+               ...state,
+               users : [...state.users, actions.payload],
+               error : ''
+           }     
+        
+        case ManageUserActionTypes.CreateUserFail :
+        return  {
+            ...state,
+            error : actions.payload
+        }
+
         default:
           return state;
     }

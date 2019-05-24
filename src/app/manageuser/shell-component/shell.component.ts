@@ -40,6 +40,10 @@ export class  ShellComponent implements OnInit {
         });
     }
 
+    CreateUser(event) {
+        this.store.dispatch(new actions.CreateUser(event));
+    }
+
     cancelAddMode(): void {
         this.mode =  this.Mode.List;
     }

@@ -1,6 +1,8 @@
 import { Component, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
 import { GlobalVariable } from '../../global';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import  { Constant}  from '../../constant';
+import  { UserModel }   from '../model/UserModel';
+
 
 
 @Component({
@@ -10,39 +12,59 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class  CreateUserComponent  implements OnInit  {
 
-    language = GlobalVariable.LanguageResourse;
-    form: FormGroup;
+    private readonly language = GlobalVariable.LanguageResourse;
     disabledSubmitButton = true;
-    optionsSelect: Array<any>;
+   private readonly  dropdownList = Constant.RolesArray.slice(0);
+    selectedItems = [];
+
+    
+
+    dropdownSettings = {
+        singleSelection: false,
+        idField: 'Id',
+        textField: 'Role',
+        selectAllText: 'Select All',
+        unSelectAllText: 'UnSelect All',
+        itemsShowLimit: 3,
+        allowSearchFilter: true
+      };
 
 // tslint:disable-next-line: no-output-rename
     @Output('cancel') cancelEmitter = new EventEmitter();
-
-    @HostListener('input') oninput() {
-
-        if (this.form.valid) {
-          this.disabledSubmitButton = false;
-        }
-      }
+    @Output('submit') submitEmitter = new EventEmitter<UserModel>();
 
       ngOnInit(){
-        this.optionsSelect = [
-            { value: '1', label: 'Option 1' },
-            { value: '2', label: 'Option 2' },
-            { value: '3', label: 'Option 3' },
-            ];
+          
       }
 
-      constructor(private fb: FormBuilder) {
-          this.form =  fb.group({
-              Username : ['', Validators.required],
-              Email : ['', Validators.compose([Validators.required, Validators.email])],
-              Roles : ['', Validators.required]
-          });
+      constructor() {
+          
       }
+
+     
+
 
     cancel(): void {
         this.cancelEmitter.next();
     }
+
+    onSubmit(createform) : void  {
+
+        if(createform  &&  createform.valid) {
+            
+           let  userModel: UserModel = {
+               Id:  0,
+               password : '',
+               Status : 0,
+               Username :  createform.form.value.Username,
+               Email  :  createform.form.value.Email,
+               Roles : createform.form.value.selectedItems
+           }
+
+           this.submitEmitter.emit(userModel);
+
+        }
+    }
+         
 
 }

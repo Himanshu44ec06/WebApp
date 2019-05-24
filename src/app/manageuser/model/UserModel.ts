@@ -1,4 +1,4 @@
-export interface UserModel  {
+export class UserModel  {
     Id: number;
     Username: string;
     password: string | null;
@@ -7,7 +7,7 @@ export interface UserModel  {
     Roles: RolesModel []
 }
 
-export interface RolesModel {
+export class RolesModel {
     Id: number;
     Role: string;
 }
