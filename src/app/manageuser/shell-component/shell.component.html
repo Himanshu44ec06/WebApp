@@ -54,5 +54,5 @@
 </table>
 
 <user-list *ngIf="mode == Mode.List" [UserList]="UserList" (DeleteUser)="DeleteUserClicked($event)"  [FilterBy]="searchString"></user-list>
-<create-user (cancel)="mode = Mode.List" (submit)="CreateUser($event)" *ngIf="mode == Mode.ADD"></create-user>
+<create-user (cancel)="mode = Mode.List" (childsubmit)="CreateUser($event)" *ngIf="mode == Mode.ADD"></create-user>
 </div>

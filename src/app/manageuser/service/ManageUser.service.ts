@@ -25,6 +25,7 @@ export class ManageUserService {
 
     createUser(user: UserModel): Observable<UserModel> {
         user.Id = this.listOfUser.length + 1;
+        this.listOfUser.push(user);
             return  of(user);
     }
 }

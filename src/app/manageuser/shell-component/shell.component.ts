@@ -36,11 +36,15 @@ export class  ShellComponent implements OnInit {
         this.store.dispatch(new actions.Load());
 
         this.store.pipe(select(state.getUsers)).subscribe((userList) => {
-            this.UserList  =  userList.splice(0);
+            this.UserList  =  userList.slice(0);
+            this.cancelAddMode();
         });
+
+        
     }
 
     CreateUser(event) {
+        console.log('Event  Listened');
         this.store.dispatch(new actions.CreateUser(event));
     }
 

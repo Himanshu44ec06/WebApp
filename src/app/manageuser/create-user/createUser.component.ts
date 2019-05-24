@@ -31,7 +31,7 @@ export class  CreateUserComponent  implements OnInit  {
 
 // tslint:disable-next-line: no-output-rename
     @Output('cancel') cancelEmitter = new EventEmitter();
-    @Output('submit') submitEmitter = new EventEmitter<UserModel>();
+    @Output('childsubmit') submitEmitter = new EventEmitter<UserModel>();
 
       ngOnInit(){
           
@@ -60,7 +60,7 @@ export class  CreateUserComponent  implements OnInit  {
                Email  :  createform.form.value.Email,
                Roles : createform.form.value.selectedItems
            }
-
+           console.log('Create Clicked');
            this.submitEmitter.emit(userModel);
 
         }

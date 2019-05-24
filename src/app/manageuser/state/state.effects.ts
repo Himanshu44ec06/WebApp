@@ -32,7 +32,7 @@ export class ManageUserEffects {
         CreateUser$: Observable<Action> = this.actions$.pipe(
             ofType(ManagerUserActions.ManageUserActionTypes.CreateUser),
             mergeMap(
-                (user: UserModel) =>  this.manageUserService.createUser(user)
+                (user: any) =>  this.manageUserService.createUser(user.payload)
                 .pipe(
                     map( newUser =>  (new ManagerUserActions.CreateUserSuccess(newUser)) ),
                     catchError(err => of(new ManagerUserActions.CreateUserFail(err)))
