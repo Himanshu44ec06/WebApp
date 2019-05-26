@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { StoreModule} from '@ngrx/store';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { EffectsModule } from '@ngrx/effects';
 
 import { ShellComponent, NavComponent, WelcomeComponent } from './home';
@@ -29,7 +28,6 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     AppRoutingModule,
     MDBBootstrapModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot(),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       name: 'APM Demo App DevTools',

@@ -26,6 +26,11 @@ export class ManageUserService {
     createUser(user: UserModel): Observable<UserModel> {
         user.Id = this.listOfUser.length + 1;
         this.listOfUser.push(user);
-            return  of(user);
+        return of(user);
+    }
+
+    deleteUser(user: UserModel): Observable<UserModel>{
+        this.listOfUser = this.listOfUser.filter( (f) => { return  f.Id !==  user.Id });
+        return of(user);
     }
 }

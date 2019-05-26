@@ -62,6 +62,7 @@ export class  ShellComponent implements OnInit {
 
     deleteUser(): void {
          console.log('user Deleted');
+         this.ShowDeletePopup =  false;
     }
 
     DeleteUserClicked(event): void {
