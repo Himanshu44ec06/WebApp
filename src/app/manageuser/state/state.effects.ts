@@ -41,6 +41,18 @@ export class ManageUserEffects {
 
         )
 
+        @Effect()
+        UpdateUser$ :  Observable<Action> = this.actions$.pipe(
+            ofType(ManagerUserActions.ManageUserActionTypes.UpdateUser),
+            mergeMap(
+                (user:any) =>  this.manageUserService.updateUser(user.payload)
+                .pipe(
+                    map( updatedUser =>  (new ManagerUserActions.UpdateUserSuccess(updatedUser))),
+                    catchError(err =>  of(new ManagerUserActions.UpdateUserFail(err)))
+                )
+            )
+        )
+
         
 
 

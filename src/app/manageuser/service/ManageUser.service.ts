@@ -28,4 +28,10 @@ export class ManageUserService {
         this.listOfUser.push(user);
             return  of(user);
     }
+
+    updateUser(user: UserModel) : Observable<UserModel> {
+         var  index  =  this.listOfUser.findIndex(f=> f.Id === user.Id);
+         this.listOfUser[index] =  user;
+         return of(user);
+    }
 }

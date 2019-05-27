@@ -7,6 +7,7 @@ import * as fromStore from '../state/state.reducer';
 import * as  actions from '../state/state.actions';
 import * as  state from '../state';
 import { Store, select } from '@ngrx/store';
+import { User } from 'src/app/user/model/user';
 
 
 
@@ -52,8 +53,11 @@ export class  ShellComponent implements OnInit {
         this.store.dispatch(new actions.InitializeCurrentUser());
     }
 
-    CreateUser(event) {
-        this.store.dispatch(new actions.CreateUser(event));
+    CreateUser(user: UserModel) {
+        if(user.Id == 0)
+            this.store.dispatch(new actions.CreateUser(user));
+        else 
+            this.store.dispatch(new actions.UpdateUser(user));
     }
 
     cancelAddMode(): void {
