@@ -2,7 +2,8 @@
 
     <mdb-card-header class="info-color white-text text-center py-4">
       <h5>
-        <strong>{{language.Create}}</strong>
+        <strong *ngIf="currentUser.Id == 0">{{language.Create}}</strong>
+        <strong *ngIf="currentUser.Id != 0">{{language.Update}}</strong>
       </h5>
     </mdb-card-header>
   
@@ -47,9 +48,13 @@
   
         <div class="row">
           
-            <button mdbBtn type="submit" [disabled]="!CreateForm.valid &&  selectedItems.length < 1"
+            <button mdbBtn type="submit" *ngIf="currentUser.Id == 0" [disabled]="!CreateForm.valid &&  selectedItems.length < 1"
             
             class="z-depth-0 my-4 waves-effect" color="primary" mdbWavesEffect>{{language.Create}}</button>
+
+            <button mdbBtn type="submit" *ngIf="currentUser.Id != 0" [disabled]="!CreateForm.valid &&  selectedItems.length < 1"
+            
+            class="z-depth-0 my-4 waves-effect" color="primary" mdbWavesEffect>{{language.Update}}</button>
             <button mdbBtn type="button" 
             class="z-depth-0 my-4 waves-effect" color="primary" (click)="cancel()" mdbWavesEffect>{{language.Cancel}}</button>
         

@@ -1,6 +1,5 @@
 
 <div class="container">
-<<<<<<< HEAD
   
 <pm-modal [title]="language.Confirmation"  (closeAction)="closeDeletePopup()" [show-modal]="ShowDeletePopup">
   <div modal-body>
@@ -12,16 +11,7 @@
   </div>
 </pm-modal>
 
-<table mdbTable borderless="true" [hidden]="mode != Mode.List">
-=======
- <pm-modal [title]="language.Confirmation" [cancel-label]="language.Cancel" (okAction)="deleteUser()" [positive-label]="language.Delete"  (closeAction)="closeDeletePopup()" [show-modal]="ShowDeletePopup">
-  <div modal-body>
-    <span>{{language.DeleteConfirmationMessage}}</span>
-  </div>
-</pm-modal>
-
 <table mdbTable borderless="true" [hidden]="currentSelectedUser">
->>>>>>> a87bf5e1b401ff718f2fc5c1a19fa3c24647b747
     <thead>
         <tr>
           
@@ -42,12 +32,9 @@
       </thead>
 </table>
 
-<<<<<<< HEAD
-<user-list *ngIf="mode == Mode.List" [UserList]="UserList" (DeleteUser)="DeleteUserClicked($event)"  [FilterBy]="searchString"></user-list>
-<create-user (cancel)="mode = Mode.List" (DeleteUser)="deleteUser($event)" (childsubmit)="CreateUser($event)" *ngIf="mode == Mode.ADD"></create-user>
-=======
+
 
 <user-list *ngIf="!currentSelectedUser" (EditUser)="EditUserClicked($event)" [UserList]="UserList" (DeleteUser)="DeleteUserClicked($event)"  [FilterBy]="searchString"></user-list>
-<create-user (cancel)="mode = Mode.List" [currentUser]="currentSelectedUser" (childsubmit)="CreateUser($event)" *ngIf="currentSelectedUser"></create-user>
->>>>>>> a87bf5e1b401ff718f2fc5c1a19fa3c24647b747
+<create-user (cancel)="cancelAddMode()" [currentUser]="currentSelectedUser" (childsubmit)="CreateUser($event)" *ngIf="currentSelectedUser"></create-user>
+
 </div>

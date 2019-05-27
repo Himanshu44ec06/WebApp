@@ -29,14 +29,16 @@ export class ManageUserService {
         return of(user);
     }
 
-    deleteUser(user: UserModel): Observable<UserModel>{
-        this.listOfUser = this.listOfUser.filter( (f) => { return  f.Id !==  user.Id });
+    deleteUser(user: UserModel): Observable<UserModel> {
+        this.listOfUser = this.listOfUser.filter( (f) => f.Id !==  user.Id);
         return of(user);
     }
 
-    updateUser(user: UserModel) : Observable<UserModel> {
-         var  index  =  this.listOfUser.findIndex(f=> f.Id === user.Id);
-         this.listOfUser[index] =  user;
-         return of(user);
+    updateUser(user: UserModel): Observable<UserModel> {
+        const index  =  this.listOfUser.findIndex(f => f.Id === user.Id);
+        if (index > -1) {
+            this.listOfUser[index] = user;
+        }
+        return of(user);
     }
 }

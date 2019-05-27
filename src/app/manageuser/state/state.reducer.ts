@@ -23,12 +23,17 @@ export  function reducer(state = initialState, actions: ManageUserActions): Mana
             return {
                 ...state,
                 currentUser :  new UserModel()
-            }
+            };
+        case ManageUserActionTypes.ClearCurrentUser : 
+           return  {
+               ...state,
+               currentUser : null
+           };
         case ManageUserActionTypes.SetCurrentUser :
             return  {
                 ...state,
                 currentUser :  actions.payload
-            }
+            };
 
         case ManageUserActionTypes.SetCurrentUser:
                 return  {
@@ -74,6 +79,17 @@ export  function reducer(state = initialState, actions: ManageUserActions): Mana
           ...state,
           error : actions.payload
         };
+
+        case ManageUserActionTypes.UpdateUserSuccess :
+        const updatedUser = state.users.map(
+            item => actions.payload.Id === item.Id ? actions.payload : item);
+        return  {
+                ...state,
+                users : updatedUser,
+                currentUser : null,
+                error : '',
+            };
+
         default:
           return state;
     }

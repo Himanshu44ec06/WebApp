@@ -7,7 +7,7 @@ import * as fromStore from '../state/state.reducer';
 import * as  actions from '../state/state.actions';
 import * as  state from '../state';
 import { Store, select } from '@ngrx/store';
-import { User } from 'src/app/user/model/user';
+
 
 
 
@@ -16,7 +16,6 @@ import { User } from 'src/app/user/model/user';
 })
 
 export class  ShellComponent implements OnInit {
-    
     constructor(private store: Store<fromStore.ManageUserState>) {
 
     }
@@ -32,7 +31,7 @@ export class  ShellComponent implements OnInit {
     language = GlobalVariable.LanguageResourse;
     ShowDeletePopup =  false;
     mode =  this.Mode.List;
-    currentSelectedUser : UserModel | null;
+    currentSelectedUser: UserModel | null;
 
     ngOnInit() {
         this.store.dispatch(new actions.Load());
@@ -42,26 +41,25 @@ export class  ShellComponent implements OnInit {
             this.cancelAddMode();
         });
 
-        this.store.pipe(select(state.getCurrentUser)).subscribe((user)=>{
+        this.store.pipe(select(state.getCurrentUser)).subscribe((user) => {
                   this.currentSelectedUser = user;
         });
-
-        
     }
 
-    AddNewUserEvent(){
+    AddNewUserEvent() {
         this.store.dispatch(new actions.InitializeCurrentUser());
     }
 
     CreateUser(user: UserModel) {
-        if(user.Id == 0)
+        if (user.Id === 0) {
             this.store.dispatch(new actions.CreateUser(user));
-        else 
+        } else {
             this.store.dispatch(new actions.UpdateUser(user));
+        }
     }
 
     cancelAddMode(): void {
-        this.mode =  this.Mode.List;
+        this.store.dispatch(new actions.ClearCurrentUser());
     }
 
     closeDeletePopup(): void {

@@ -6,7 +6,6 @@ import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 
 import * as ManagerUserActions from '../state/state.actions';
-import { UserModel } from '../model/UserModel';
 
 
 @Injectable()
@@ -14,7 +13,8 @@ export class ManageUserEffects {
 
     constructor(private actions$: Actions,
                 private  manageUserService: ManageUserService
-        ){}
+        ) {
+        }
 
         @Effect()
         LoadUser$: Observable<Action> = this.actions$.pipe(
@@ -42,7 +42,6 @@ export class ManageUserEffects {
         );
 
         @Effect()
-<<<<<<< HEAD
         DeleteUser$: Observable<Action> = this.actions$.pipe(
             ofType(ManagerUserActions.ManageUserActionTypes.DeleteUser),
             mergeMap(
@@ -53,21 +52,18 @@ export class ManageUserEffects {
                 )
             )
         );
-=======
-        UpdateUser$ :  Observable<Action> = this.actions$.pipe(
+
+        @Effect()
+        UpdateUser$: Observable<Action> = this.actions$.pipe(
             ofType(ManagerUserActions.ManageUserActionTypes.UpdateUser),
             mergeMap(
-                (user:any) =>  this.manageUserService.updateUser(user.payload)
+                (user: any) =>  this.manageUserService.updateUser(user.payload)
                 .pipe(
                     map( updatedUser =>  (new ManagerUserActions.UpdateUserSuccess(updatedUser))),
                     catchError(err =>  of(new ManagerUserActions.UpdateUserFail(err)))
                 )
             )
-        )
-
-        
-
->>>>>>> a87bf5e1b401ff718f2fc5c1a19fa3c24647b747
+        );
 
 
 }

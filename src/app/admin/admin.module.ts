@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 
 import { StoreModule } from '@ngrx/store';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { ShellComponent } from './index';
 import { Routes, RouterModule } from '@angular/router';
@@ -23,7 +24,8 @@ const AdminRoute: Routes = [
 @NgModule({
     imports : [
         SharedModule,
-        RouterModule.forChild(AdminRoute)
+        RouterModule.forChild(AdminRoute),
+        MDBBootstrapModule.forRoot()
     ],
     exports : [],
     providers: [
@@ -32,7 +34,8 @@ const AdminRoute: Routes = [
     declarations: [
         ShellComponent,
 
-    ]
+    ],
+    schemas: [NO_ERRORS_SCHEMA]
 })
 
 export  class  AdminModule {
