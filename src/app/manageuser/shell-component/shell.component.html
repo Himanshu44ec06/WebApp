@@ -1,36 +1,10 @@
 
 <div class="container">
-  <!-- <div class="row">
-    <div class="col-md-4">
-      <button type="button" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> {{language.Add}}</button>
-    </div>
-    <div class="col-md-4">
-      <input class="form-control" 
-      [(ngModel)]="searchString" name="searchString"
-       type="search" placeholder="Search" aria-label="Search">
-    </div>
-    <div class="col-md-4"></div>
-</div>
-
-<pm-modal [title]="language.Confirmation" (closeAction)="closeDeletePopup()" [show-modal]="ShowDeletePopup">
-     <div modal-body>
-       <span>{{language.DeleteConfirmationMessage}}</span>
-     </div>
-     <div modal-footer>
-        <button (click)="closeDeletePopup()" type="button" class="btn btn-secondary" >{{language.Close}}</button>
-        <button (click)="deleteUser()" type="button" class="btn btn-primary" >{{language.Delete}}</button>
-     </div>
+ <pm-modal [title]="language.Confirmation" [cancel-label]="language.Cancel" (okAction)="deleteUser()" [positive-label]="language.Delete"  (closeAction)="closeDeletePopup()" [show-modal]="ShowDeletePopup">
+  <div modal-body>
+    <span>{{language.DeleteConfirmationMessage}}</span>
+  </div>
 </pm-modal>
-
-<pm-modal [title]="language.Confirmation" (closeAction)="closeDeletePopup()" [show-modal]="ShowDeletePopup">
-    <div modal-body>
-      <span>{{language.DeleteConfirmationMessage}}</span>
-    </div>
-    <div modal-footer>
-       <button (click)="closeDeletePopup()" type="button" class="btn btn-secondary" >{{language.Close}}</button>
-       <button (click)="deleteUser()" type="button" class="btn btn-primary" >{{language.Delete}}</button>
-    </div>
-</pm-modal> -->
 
 <table mdbTable borderless="true" [hidden]="mode != Mode.List">
     <thead>
@@ -44,7 +18,7 @@
               
           </th>
           <th>
-              <button mdbBtn type="button" color="default" (click)="mode = Mode.ADD" size="sm" mdbWavesEffect>
+              <button mdbBtn type="button" color="default" (click)="AddNewUserEvent()" size="sm" mdbWavesEffect>
                   <i class="fas fa-plus"></i>  {{language.Add}}
                 </button>
           </th>
@@ -53,6 +27,7 @@
       </thead>
 </table>
 
-<user-list *ngIf="mode == Mode.List" [UserList]="UserList" (DeleteUser)="DeleteUserClicked($event)"  [FilterBy]="searchString"></user-list>
-<create-user (cancel)="mode = Mode.List" (childsubmit)="CreateUser($event)" *ngIf="mode == Mode.ADD"></create-user>
+
+<user-list *ngIf="!currentSelectedUser" (EditUser)="EditUserClicked($event)" [UserList]="UserList" (DeleteUser)="DeleteUserClicked($event)"  [FilterBy]="searchString"></user-list>
+<create-user (cancel)="mode = Mode.List" [currentUser]="currentSelectedUser" (childsubmit)="CreateUser($event)" *ngIf="currentSelectedUser"></create-user>
 </div>

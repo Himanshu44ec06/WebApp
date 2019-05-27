@@ -5,18 +5,37 @@ import { ManageUserActions, ManageUserActionTypes } from './state.actions';
 export interface ManageUserState  {
     currentUserId: number | null;
     users: UserModel[];
+    currentUser : UserModel  | null;
     error: string;
 }
 
 
 const initialState: ManageUserState = {
     currentUserId : null,
+    currentUser :  null,
     users: [],
     error: ''
 };
 
 export  function reducer(state = initialState, actions: ManageUserActions): ManageUserState {
     switch (actions.type) {
+        case ManageUserActionTypes.InitializeCurrentUser : 
+            return {
+                ...state,
+                currentUser :  new UserModel()
+            }
+        case ManageUserActionTypes.SetCurrentUser :
+            return  {
+                ...state,
+                currentUser :  actions.payload
+            }
+
+        case ManageUserActionTypes.SetCurrentUser:
+                return  {
+                    ...state,
+                    currentUser : actions.payload,
+                    error : ''
+                };
         case  ManageUserActionTypes.LoadSuccess :
             return  {
                 ...state,
@@ -34,6 +53,7 @@ export  function reducer(state = initialState, actions: ManageUserActions): Mana
            return  {
                ...state,
                users : [...state.users, actions.payload],
+               currentUser: null,
                error : ''
            }     
         

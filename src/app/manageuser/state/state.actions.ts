@@ -29,6 +29,7 @@ export  class InitializeCurrentUser implements Action {
     readonly type =  ManageUserActionTypes.InitializeCurrentUser;
 }
 
+
 export class  ClearCurrentUser implements Action {
      readonly type = ManageUserActionTypes.ClearCurrentUser;
 }

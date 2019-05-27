@@ -11,14 +11,14 @@
       <form novalidate  #CreateForm="ngForm" class="text-center" style="color: #757575;"  (ngSubmit)="onSubmit(CreateForm)">
   
         <div class="md-form mt-3">
-          <input [(ngModel)]="Username"   required type="text"  
+          <input [(ngModel)]="currentUser.Username"   required type="text"  
           id="Username" name="Username" class="form-control" 
             mdbInput>
           <label for="Username">{{language.UserNameLabel}}</label>
         </div>
          
         <div class="md-form">
-          <input type="email" [(ngModel)]="Email" required  id="Email" name="Email" class="form-control"
+          <input type="email" [(ngModel)]="currentUser.Email" required  id="Email" name="Email" class="form-control"
             mdbInput>
             <label for="Email" data-error="wrong" data-success="right">Type your email</label>
          
@@ -33,7 +33,7 @@
             name = "selectedItems"
             [placeholder]="language.SelectRoles"
             [data]="dropdownList"
-            [(ngModel)]="selectedItems"
+            [(ngModel)]="currentUser.Roles"
             [settings]="dropdownSettings"
             
           >

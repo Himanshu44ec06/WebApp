@@ -31,6 +31,7 @@ export class  ShellComponent implements OnInit {
     language = GlobalVariable.LanguageResourse;
     ShowDeletePopup =  false;
     mode =  this.Mode.List;
+    currentSelectedUser : UserModel | null;
 
     ngOnInit() {
         this.store.dispatch(new actions.Load());
@@ -40,11 +41,18 @@ export class  ShellComponent implements OnInit {
             this.cancelAddMode();
         });
 
+        this.store.pipe(select(state.getCurrentUser)).subscribe((user)=>{
+                  this.currentSelectedUser = user;
+        });
+
         
     }
 
+    AddNewUserEvent(){
+        this.store.dispatch(new actions.InitializeCurrentUser());
+    }
+
     CreateUser(event) {
-        console.log('Event  Listened');
         this.store.dispatch(new actions.CreateUser(event));
     }
 
@@ -67,6 +75,10 @@ export class  ShellComponent implements OnInit {
     DeleteUserClicked(event): void {
         this.ShowDeletePopup =  true;
         console.log(event);
+    }
+
+    EditUserClicked(event): void  {
+        this.store.dispatch(new actions.SetCurrentUser(event));  
     }
 
 }
