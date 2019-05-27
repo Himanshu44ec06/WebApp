@@ -42,6 +42,7 @@ export class ManageUserEffects {
         );
 
         @Effect()
+<<<<<<< HEAD
         DeleteUser$: Observable<Action> = this.actions$.pipe(
             ofType(ManagerUserActions.ManageUserActionTypes.DeleteUser),
             mergeMap(
@@ -52,6 +53,21 @@ export class ManageUserEffects {
                 )
             )
         );
+=======
+        UpdateUser$ :  Observable<Action> = this.actions$.pipe(
+            ofType(ManagerUserActions.ManageUserActionTypes.UpdateUser),
+            mergeMap(
+                (user:any) =>  this.manageUserService.updateUser(user.payload)
+                .pipe(
+                    map( updatedUser =>  (new ManagerUserActions.UpdateUserSuccess(updatedUser))),
+                    catchError(err =>  of(new ManagerUserActions.UpdateUserFail(err)))
+                )
+            )
+        )
+
+        
+
+>>>>>>> a87bf5e1b401ff718f2fc5c1a19fa3c24647b747
 
 
 }

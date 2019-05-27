@@ -28,6 +28,8 @@ export  const getCurrentUserId = createSelector(
     state => state.currentUserId
 );
 
+
+/*
 export  const getCurrentUser = createSelector(
     getFeatureState,
     getCurrentUserId,
@@ -35,5 +37,12 @@ export  const getCurrentUser = createSelector(
          if (currentId !== 0) {
              return  currentId ? state.users.find(p => p.Id === currentId) :  null;
          }
+         return null;
+         
     }
-);
+);*/
+
+export  const getCurrentUser = createSelector(
+    getFeatureState,
+    state => state.currentUser
+)

@@ -1,4 +1,3 @@
-
 <table mdbTable hover="true" striped="true" [hidden]="filterUserList.length<1">
     <thead>
       <tr>
@@ -20,10 +19,15 @@
         <td>{{el.Email}}</td>
         <td><span *ngFor="let role of el.Roles" class="badge badge-pill badge-default align-middle">{{role.Role}}</span></td>
         <td>
-            <button  class="btn btn-sm btn-primary" (click)="emitDeleteUser(el)"><i class="fas fa-edit"></i></button>
           <button  class="btn btn-sm btn-primary" (click)="emitDeleteUser(el)"><i class="fas fa-edit"></i></button>
+<<<<<<< HEAD
           <button (click)="emitDeleteUser(el)"  class="btn btn-sm btn-primary"><i class="far fa-trash-alt"></i></button>
             </td>
+=======
+          <button  class="btn btn-sm btn-primary" (click)="emitEditUser(el)"><i class="fas fa-edit"></i></button>
+          <button  class="btn btn-sm btn-primary" (click)="emitDeleteUser(el)"><i class="far fa-trash-alt"></i></button>
+        </td>
+>>>>>>> a87bf5e1b401ff718f2fc5c1a19fa3c24647b747
       </tr>
     </tbody>
   </table>

@@ -7,6 +7,7 @@ import * as fromStore from '../state/state.reducer';
 import * as  actions from '../state/state.actions';
 import * as  state from '../state';
 import { Store, select } from '@ngrx/store';
+import { User } from 'src/app/user/model/user';
 
 
 
@@ -31,6 +32,7 @@ export class  ShellComponent implements OnInit {
     language = GlobalVariable.LanguageResourse;
     ShowDeletePopup =  false;
     mode =  this.Mode.List;
+    currentSelectedUser : UserModel | null;
 
     ngOnInit() {
         this.store.dispatch(new actions.Load());
@@ -40,12 +42,22 @@ export class  ShellComponent implements OnInit {
             this.cancelAddMode();
         });
 
+        this.store.pipe(select(state.getCurrentUser)).subscribe((user)=>{
+                  this.currentSelectedUser = user;
+        });
+
         
     }
 
-    CreateUser(event) {
-        console.log('Event  Listened');
-        this.store.dispatch(new actions.CreateUser(event));
+    AddNewUserEvent(){
+        this.store.dispatch(new actions.InitializeCurrentUser());
+    }
+
+    CreateUser(user: UserModel) {
+        if(user.Id == 0)
+            this.store.dispatch(new actions.CreateUser(user));
+        else 
+            this.store.dispatch(new actions.UpdateUser(user));
     }
 
     cancelAddMode(): void {
@@ -68,6 +80,10 @@ export class  ShellComponent implements OnInit {
     DeleteUserClicked(event): void {
         this.ShowDeletePopup =  true;
         console.log(event);
+    }
+
+    EditUserClicked(event): void  {
+        this.store.dispatch(new actions.SetCurrentUser(event));  
     }
 
 }

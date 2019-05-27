@@ -1,7 +1,8 @@
-import { Component, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, HostListener, Output, EventEmitter, OnInit, Input, OnChanges } from '@angular/core';
 import { GlobalVariable } from '../../global';
 import  { Constant}  from '../../constant';
 import  { UserModel }   from '../model/UserModel';
+
 
 
 
@@ -10,13 +11,13 @@ import  { UserModel }   from '../model/UserModel';
     selector : 'create-user',
     templateUrl : './createUser.component.html'
 })
-export class  CreateUserComponent  implements OnInit  {
+export class  CreateUserComponent  implements OnInit,OnChanges  {
 
     private readonly language = GlobalVariable.LanguageResourse;
     disabledSubmitButton = true;
    private readonly  dropdownList = Constant.RolesArray.slice(0);
     selectedItems = [];
-
+    @Input('currentUser') currentUser: UserModel;
     
 
     dropdownSettings = {
@@ -37,12 +38,11 @@ export class  CreateUserComponent  implements OnInit  {
           
       }
 
-      constructor() {
-          
+      ngOnChanges(){
+          if(this.currentUser) {
+              console.log(this.currentUser);
+          }
       }
-
-     
-
 
     cancel(): void {
         this.cancelEmitter.next();
@@ -51,18 +51,8 @@ export class  CreateUserComponent  implements OnInit  {
     onSubmit(createform) : void  {
 
         if(createform  &&  createform.valid) {
-            
-           let  userModel: UserModel = {
-               Id:  0,
-               password : '',
-               Status : 0,
-               Username :  createform.form.value.Username,
-               Email  :  createform.form.value.Email,
-               Roles : createform.form.value.selectedItems
-           }
-           console.log('Create Clicked');
-           this.submitEmitter.emit(userModel);
-
+            console.log(this.currentUser)
+           this.submitEmitter.emit(this.currentUser);
         }
     }
          

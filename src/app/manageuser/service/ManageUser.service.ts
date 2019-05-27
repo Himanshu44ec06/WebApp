@@ -33,4 +33,10 @@ export class ManageUserService {
         this.listOfUser = this.listOfUser.filter( (f) => { return  f.Id !==  user.Id });
         return of(user);
     }
+
+    updateUser(user: UserModel) : Observable<UserModel> {
+         var  index  =  this.listOfUser.findIndex(f=> f.Id === user.Id);
+         this.listOfUser[index] =  user;
+         return of(user);
+    }
 }
