@@ -15,8 +15,10 @@ const AdminRoute: Routes = [
         path: '',
         component: ShellComponent,
         children: [
-             { path : 'manageuser', canActivate:[ManageUserAuthGuard] ,
-             loadChildren : '../manageuser/manageuser.module#ManageUserModule'}
+             { path : 'manageuser', canActivate: [ManageUserAuthGuard] ,
+             loadChildren : '../manageuser/manageuser.module#ManageUserModule'},
+             { path : 'manageproduct', canActivate: [ManageUserAuthGuard] , // Change here  with Product Permission
+             loadChildren : '../manageproduct/manageProduct.module#ManageProductModule'}
         ]
     }
 ];
