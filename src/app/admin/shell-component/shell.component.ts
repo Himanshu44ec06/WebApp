@@ -11,12 +11,12 @@ import { AuthService } from 'src/app/user/service/auth.service';
     }
     
     #sidebar-wrapper {
-      margin-left: -250px;
-      left: 250px;
+      
       width: 250px;
-      background: #000;
-      position: fixed;
+      background: #3f729b !important;
+      
       height: 100%;
+      min-height: 300px;
       overflow-y: auto;
       z-index: 1000;
       transition: all 0.4s ease 0s;
@@ -47,7 +47,8 @@ import { AuthService } from 'src/app/user/service/auth.service';
     
     .sidebar-nav li {
       line-height: 40px;
-      text-indent: 20px;
+      
+      width: 100%
     }
     
     .sidebar-nav li a {
