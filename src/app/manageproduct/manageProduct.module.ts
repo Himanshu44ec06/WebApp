@@ -3,7 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
+import { GlobalVariable} from '../global';
+
 import {ShellComponent , ManageCategory, ManageService, ManageSubCategory} from './index';
+import { StoreModule } from '@ngrx/store';
+import {  EffectsModule } from '@ngrx/effects';
+import { reducer } from './state/state.reducer';
+
+import { ManageCategoryEffects }  from './state/state.effects'
 
 
 const  route: Routes = [
@@ -13,6 +20,8 @@ const  route: Routes = [
 @NgModule({
     imports: [
         CommonModule,
+        StoreModule.forFeature(GlobalVariable.Store.ManageCategory,reducer),
+        EffectsModule.forFeature([ManageCategoryEffects]),
         RouterModule.forChild(route),
         MDBBootstrapModule.forRoot()
     ],
@@ -23,7 +32,8 @@ const  route: Routes = [
     providers : [
         ManageCategory,
         ManageService,
-        ManageSubCategory
+        ManageSubCategory,
+        ManageCategoryEffects
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })
