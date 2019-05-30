@@ -59,6 +59,11 @@ export const GlobalVariable  =  Object.freeze({
         Update : 'Update',
         SelectRoles: 'Select Roles',
         Category : 'Category',
-    
+        DisplayName : 'Display Name',
+        Url : 'Url',
+        Icon : 'Icon',
+        Description : 'Description',
+        Inclusions : 'Inclusions',
+        Exclusions : 'Exclusions'
     }
 });

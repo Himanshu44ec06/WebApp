@@ -5,12 +5,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { GlobalVariable} from '../global';
 
-import {ShellComponent , ManageCategory, ManageService, ManageSubCategory} from './index';
+import {ShellComponent, CreateCategoryComponent, CategoryListComponent ,
+    ManageCategory, ManageService, ManageSubCategory} from './index';
 import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
 import { reducer } from './state/state.reducer';
 
-import { ManageCategoryEffects }  from './state/state.effects'
+import { ManageCategoryEffects } from './state/state.effects';
 
 
 const  route: Routes = [
@@ -20,14 +21,16 @@ const  route: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        StoreModule.forFeature(GlobalVariable.Store.ManageCategory,reducer),
+        StoreModule.forFeature(GlobalVariable.Store.ManageCategory, reducer),
         EffectsModule.forFeature([ManageCategoryEffects]),
         RouterModule.forChild(route),
         MDBBootstrapModule.forRoot()
     ],
     exports: [],
     declarations: [
-        ShellComponent
+        ShellComponent,
+        CreateCategoryComponent,
+        
     ],
     providers : [
         ManageCategory,

@@ -1,8 +1,9 @@
-export class  SubCategory {
-    Id:  number = 0;
-    CategoryId:  number = 0;
-    Name: string = '';
-    Status:  number = 0;
-    Icon : string  = '';
-    Meta : Object;
+import { Base } from './Base';
+
+export class  SubCategory extends Base  {
+    Id = 0;
+    CategoryId = 0;
+    Name = '';
+    Status = 0;
+    Icon  = '';
 }

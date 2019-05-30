@@ -32,14 +32,14 @@ export class  CreateUserComponent  implements OnInit,OnChanges  {
 
 // tslint:disable-next-line: no-output-rename
     @Output('cancel') cancelEmitter = new EventEmitter();
+// tslint:disable-next-line: no-output-rename
     @Output('childsubmit') submitEmitter = new EventEmitter<UserModel>();
 
-      ngOnInit(){
-          
+      ngOnInit() {
       }
 
-      ngOnChanges(){
-          if(this.currentUser) {
+      ngOnChanges() {
+          if (this.currentUser) {
               console.log(this.currentUser);
           }
       }
@@ -48,13 +48,10 @@ export class  CreateUserComponent  implements OnInit,OnChanges  {
         this.cancelEmitter.next();
     }
 
-    onSubmit(createform) : void  {
+    onSubmit(createform): void  {
 
-        if(createform  &&  createform.valid) {
-            console.log(this.currentUser)
-           this.submitEmitter.emit(this.currentUser);
+        if (createform  &&  createform.valid) {
+            this.submitEmitter.emit(this.currentUser);
         }
     }
-         
-
 }

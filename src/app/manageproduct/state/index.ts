@@ -4,7 +4,6 @@ import { GlobalVariable } from '../../global';
 
 import * as  fromRoot from '../../state/state';
 import * as  fromFeature from '../state/state.reducer';
-import { stat } from 'fs';
 
 export interface State extends fromRoot.State {
     ManageCategory: fromFeature.ManageProductState;
