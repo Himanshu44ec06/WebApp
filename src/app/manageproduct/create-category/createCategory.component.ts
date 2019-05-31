@@ -21,7 +21,7 @@ export class  CreateCategoryComponent  {
      @Output('cancel') cancelEmitter = new EventEmitter();
 
 // tslint:disable-next-line: no-output-rename
-     @Output('submit') submitEmitter = new EventEmitter();
+     @Output('submitChild') submitEmitter = new EventEmitter();
 
      addInclusionOrExclusion(type : number) {
           switch(type) {

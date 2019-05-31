@@ -1,4 +1,35 @@
-import  { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Category } from '../model';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
-export  class ManageCategory {}
+export  class ManageCategoryService {
+    constructor() {
+
+    }
+
+    listOfCategory: Category[] = [];
+
+    getCategory(): Observable<Category[]> {
+            return of(this.listOfCategory);
+    }
+
+    deleteCategory(category: Category): Observable<Category> {
+          this.listOfCategory  = this.listOfCategory.filter( (f) => f.Id !== category.Id );
+          return  of(category);
+    }
+
+    updateCategory(category: Category): Observable<Category> {
+        const  index =  this.listOfCategory.findIndex( f =>  f.Id === category.Id);
+        this.listOfCategory[index] = category;
+        return  of(category);
+    }
+
+    addCatgory(category: Category): Observable<Category> {
+             category.Id =  this.listOfCategory.length + 1;
+             this.listOfCategory.push(category);
+             return of(category);
+    }
+
+
+}

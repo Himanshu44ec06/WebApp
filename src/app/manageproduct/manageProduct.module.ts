@@ -6,7 +6,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { GlobalVariable} from '../global';
 
 import {ShellComponent, CreateCategoryComponent, CategoryListComponent ,
-    ManageCategory, ManageService, ManageSubCategory} from './index';
+    ManageCategoryService, ManageService, ManageSubCategory} from './index';
 import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
 import { reducer } from './state/state.reducer';
@@ -36,7 +36,7 @@ const  route: Routes = [
         
     ],
     providers : [
-        ManageCategory,
+        ManageCategoryService,
         ManageService,
         ManageSubCategory,
         ManageCategoryEffects
