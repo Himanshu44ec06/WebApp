@@ -64,6 +64,7 @@ export const GlobalVariable  =  Object.freeze({
         Icon : 'Icon',
         Description : 'Description',
         Inclusions : 'Inclusions',
-        Exclusions : 'Exclusions'
+        Exclusions : 'Exclusions',
+        Submit : 'Submit',
     }
 });

@@ -1,4 +1,4 @@
-<form class="border border-light p-5">
+<form #CreateForm="ngForm" (submit)="Submit()"  class="border border-light p-5">
     <div class="form-group">
       <label for="exampleInputEmail1">{{language.DisplayName}}</label>
       <input type="email" class="form-control" [(ngModel)]="currentCategory.Name" id="name"  placeholder="{{language.DisplayName}}">
@@ -18,30 +18,50 @@
     <div class="form-group">
       <label for="exampleFormControlTextarea1">{{language.Inclusions}}</label>
       <input type="text" class="form-control" [(ngModel)]="inclusionText" 
-      id="inclusionText" placeholder="{{language.Inclusions}}" 
+      name="inclusionText" placeholder="{{language.Inclusions}}" 
        aria-describedby="button-addon2">
       <div class="input-group-append">
-          <button class="btn btn-sm btn-primary" [disabled]="inclusionText.length < 5"  type="button" id="button-addon2">{{language.Add}}</button>
+          <button class="btn btn-sm btn-primary" [disabled]="inclusionText.length < 5"  type="button" id="button-addon2" 
+          (click)="addInclusionOrExclusion(1)">{{language.Add}}</button>
       </div>
-      {{inclusionText.length}}
-      <div *ngFor="let inclusion of currentCategory.Inclusions">
-        <span class="badge badge-pill badge-default align-middle">{{inclusion.Text}}</span>
-      </div>
+      
+      <div class="row">
+        <div class="col-md-4" *ngFor="let inclusion of currentCategory.Inclusions; let i = index">
+         <div  class="alert alert-warning alert-dismissible fade show text-wrap" role="alert">
+           <button type="button" class="close" aria-label="Close" (click)="removeInclusionOrExclusion(1,i)">
+             <span aria-hidden="true">&times;</span>
+           </button>
+           {{inclusion.Text}}
+         </div>
+        </div>
+ </div>
   </div>
 
   <div class="form-group">
     <label for="exampleFormControlTextarea1">{{language.Exclusions}}</label>
-    <input type="text" class="form-control" [(ngModel)]="exclusionText" id="exclusionText" placeholder="{{language.Exclusions}}" 
+    <input type="text" class="form-control" [(ngModel)]="exclusionText" id="exclusionText" name="exclusionText" placeholder="{{language.Exclusions}}" 
      aria-describedby="button-addon2">
     <div class="input-group-append">
         <button class="btn btn-sm btn-primary" [disabled]="exclusionText.length < 5" 
+        (click)="addInclusionOrExclusion(2)"
          type="button" id="button-addon2">{{language.Add}}</button>
     </div>
-    <div *ngFor="let inclusion of currentCategory.Exclusions">
-      <span class="badge badge-pill badge-default align-middle">{{inclusion.Text}}</span>
-    </div>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let Exclusions of currentCategory.Exclusions;let i = index">
+       <div  class="alert alert-warning alert-dismissible fade show text-wrap" role="alert">
+         <button type="button" class="close" aria-label="Close" (click)="removeInclusionOrExclusion(2,i)">
+           <span aria-hidden="true">&times;</span>
+         </button>
+         {{Exclusions.Text}}
+       </div>
+      </div>
+</div>
+
+   
+   
 </div>
 
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">{{language.Submit}}</button>
+    <button type="button" (click)="Cancel()" class="btn btn-light">{{language.Cancel}}</button>
   </form>

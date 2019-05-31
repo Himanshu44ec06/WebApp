@@ -20,17 +20,10 @@ export class  ShellComponent implements OnInit {
 
     }
 
-    Mode = {
-        ADD : 'ADD',
-        List : 'List',
-        Edit : 'Edit',
-    };
-
     searchString = '';
     UserList: UserModel[] = [];
     language = GlobalVariable.LanguageResourse;
     ShowDeletePopup =  false;
-    mode =  this.Mode.List;
     currentSelectedUser: UserModel | null;
 
     ngOnInit() {
@@ -71,13 +64,11 @@ export class  ShellComponent implements OnInit {
     }
 
     deleteUser(): void {
-         console.log('user Deleted');
          this.ShowDeletePopup =  false;
     }
 
     DeleteUserClicked(event): void {
         this.ShowDeletePopup =  true;
-        console.log(event);
     }
 
     EditUserClicked(event): void  {

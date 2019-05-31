@@ -5,7 +5,7 @@ import { Category } from '../model';
 @Component({
 // tslint:disable-next-line: component-selector
     selector : 'category-list',
-    templateUrl : './categorylist.component.ts'
+    templateUrl : './categorylist.component.html'
 })
 
 export class  CategoryListComponent implements OnChanges {

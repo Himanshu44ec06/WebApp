@@ -23,6 +23,34 @@ export class  CreateCategoryComponent  {
 // tslint:disable-next-line: no-output-rename
      @Output('submit') submitEmitter = new EventEmitter();
 
+     addInclusionOrExclusion(type : number) {
+          switch(type) {
+               case 1 :
+                      this.currentCategory.Inclusions.push({
+                           Text : this.inclusionText
+                      }); 
+                      this.inclusionText = '';
+                    break;
+               case 2 : 
+               
+               this.currentCategory.Exclusions.push({
+                    Text : this.exclusionText
+               }); 
+               this.exclusionText = '';
+                    break;
+          }
+     }
+
+     removeInclusionOrExclusion(type : number ,index: number) {
+          switch(type) {
+               case 1 :
+                    this.currentCategory.Inclusions.splice(index,1);
+                    break;
+               case 2 : 
+                    this.currentCategory.Exclusions.splice(index,1);
+                    break;
+          }
+     }
 
      Cancel() {
           this.cancelEmitter.next();

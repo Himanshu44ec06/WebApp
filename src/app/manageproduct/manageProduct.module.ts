@@ -12,6 +12,7 @@ import {  EffectsModule } from '@ngrx/effects';
 import { reducer } from './state/state.reducer';
 
 import { ManageCategoryEffects } from './state/state.effects';
+import { SharedModule } from '../shared/shared.module';
 
 
 const  route: Routes = [
@@ -21,6 +22,7 @@ const  route: Routes = [
 @NgModule({
     imports: [
         CommonModule,
+        SharedModule,
         StoreModule.forFeature(GlobalVariable.Store.ManageCategory, reducer),
         EffectsModule.forFeature([ManageCategoryEffects]),
         RouterModule.forChild(route),
@@ -30,6 +32,7 @@ const  route: Routes = [
     declarations: [
         ShellComponent,
         CreateCategoryComponent,
+        CategoryListComponent
         
     ],
     providers : [
