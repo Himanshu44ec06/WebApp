@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 
 import * as ManagerCategoryActions from '../state/state.actions';
-import { ManageCategoryService } from '..';
+import { ManageCategoryService } from '../service/ManageCategory.service';
 
 
 

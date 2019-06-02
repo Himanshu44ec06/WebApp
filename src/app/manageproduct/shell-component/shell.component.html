@@ -23,6 +23,7 @@
           </thead>
     </table>
     
-    
 <create-category *ngIf="CurrentCategory" [current-category]='CurrentCategory' (cancel)='CancelAddCategory()' (submitChild)='SubmitAddCategory($event)'></create-category>    
+<category-list *ngIf="!CurrentCategory" [list]='CategoryList' [search]='searchString' (Edit-Category)='EditCategory($event)' (Delete-Category)='DeleteCategory($event)'></category-list>   
+
 </div>

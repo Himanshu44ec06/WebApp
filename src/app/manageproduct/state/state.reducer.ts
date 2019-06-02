@@ -57,6 +57,21 @@ export  function reducer(state = intialState, actions: ManageProductAction): Man
                 ...state,
                 CurrentCategory: actions.payload
             };
+        case ManageProductActionTypes.AddCategorySuccess:
+        return  {
+             ...state,
+             error : '',
+             CurrentCategory :  null,
+             Category : [...state.Category, actions.payload]
+        };
+
+        case ManageProductActionTypes.AddCategoryFail:
+        return  {
+             ...state,
+             error: actions.payload
+        };
+
+
         case ManageProductActionTypes.UpdateCategorySuccess:
              const updateCategory = state.Category.map(
                      item => actions.payload.Id === item.Id ? actions.payload : item);

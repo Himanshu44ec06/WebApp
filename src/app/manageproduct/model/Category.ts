@@ -2,7 +2,7 @@ import { Base } from './Base';
 
 export class Category  extends Base {
 
-    constructor(){
+    constructor() {
         super();
     }
 

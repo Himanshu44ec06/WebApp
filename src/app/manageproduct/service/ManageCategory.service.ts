@@ -10,6 +10,15 @@ export  class ManageCategoryService {
 
     listOfCategory: Category[] = [];
 
+    getcategoryById(id): Observable<Category> {
+        const category = this.listOfCategory.filter( f => f.Id === id);
+        if (category.length > 0) {
+            return  of(category[0]);
+        } else {
+            return  of(null);
+        }
+    }
+
     getCategory(): Observable<Category[]> {
             return of(this.listOfCategory);
     }
@@ -30,6 +39,8 @@ export  class ManageCategoryService {
              this.listOfCategory.push(category);
              return of(category);
     }
+
+
 
 
 }

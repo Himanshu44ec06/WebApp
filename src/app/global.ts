@@ -19,7 +19,8 @@ export const GlobalVariable  =  Object.freeze({
     },
     Url : {
        AfterLogin: 'welcome',
-       LOGIN : '/user/login'
+       LOGIN : '/user/login',
+       ManageProduct : 'admin/manageproduct'
     },
     LanguageResourse : {
         Search: 'Search',

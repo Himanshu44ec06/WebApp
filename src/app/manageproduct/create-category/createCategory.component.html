@@ -1,17 +1,18 @@
+
 <form #CreateForm="ngForm" (submit)="Submit()"  class="border border-light p-5">
     <div class="form-group">
       <label for="exampleInputEmail1">{{language.DisplayName}}</label>
-      <input type="email" class="form-control" [(ngModel)]="currentCategory.Name" id="name"  placeholder="{{language.DisplayName}}">
+      <input type="text" class="form-control" [(ngModel)]="currentCategory.Name" name="name"  placeholder="{{language.DisplayName}}">
      
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">{{language.Icon}} {{language.Url}}</label>
-      <input type="password" class="form-control" [(ngModel)]="currentCategory.Icon" id="Icon" placeholder="{{language.Icon}}">
+      <input type="text" class="form-control" [(ngModel)]="currentCategory.Icon" name="Icon" placeholder="{{language.Icon}}">
     </div>
     
     <div class="form-group">
         <label for="exampleFormControlTextarea1">{{language.Description}}</label>
-        <textarea class="form-control" [(ngModel)]="currentCategory.Description" id="Description"  rows="3"></textarea>
+        <textarea class="form-control" [(ngModel)]="currentCategory.Description" name="Description"  rows="3"></textarea>
     </div>
 
     

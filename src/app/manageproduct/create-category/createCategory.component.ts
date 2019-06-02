@@ -10,9 +10,13 @@ import { GlobalVariable } from '../../global';
 
 export class  CreateCategoryComponent  {
 
-     language = GlobalVariable.LanguageResourse;
+     language = null;
      inclusionText = '';
      exclusionText = '';
+
+     constructor() {
+          this.language = GlobalVariable.LanguageResourse;
+     }
 
 // tslint:disable-next-line: no-input-rename
      @Input('current-category') currentCategory: Category;
@@ -23,31 +27,30 @@ export class  CreateCategoryComponent  {
 // tslint:disable-next-line: no-output-rename
      @Output('submitChild') submitEmitter = new EventEmitter();
 
-     addInclusionOrExclusion(type : number) {
-          switch(type) {
+     addInclusionOrExclusion(type: number) {
+          switch (type) {
                case 1 :
                       this.currentCategory.Inclusions.push({
                            Text : this.inclusionText
-                      }); 
+                      });
                       this.inclusionText = '';
-                    break;
-               case 2 : 
-               
+                      break;
+               case 2:
                this.currentCategory.Exclusions.push({
                     Text : this.exclusionText
-               }); 
+               });
                this.exclusionText = '';
-                    break;
+               break;
           }
      }
 
-     removeInclusionOrExclusion(type : number ,index: number) {
-          switch(type) {
+     removeInclusionOrExclusion(type: number, index: number) {
+          switch (type) {
                case 1 :
-                    this.currentCategory.Inclusions.splice(index,1);
+                    this.currentCategory.Inclusions.splice(index, 1);
                     break;
-               case 2 : 
-                    this.currentCategory.Exclusions.splice(index,1);
+               case 2:
+                    this.currentCategory.Exclusions.splice(index, 1);
                     break;
           }
      }

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Category } from '../model';
+import { GlobalVariable } from 'src/app/global';
 
 
 @Component({
@@ -11,6 +12,8 @@ import { Category } from '../model';
 export class  CategoryListComponent implements OnChanges {
 
     FilterList: Category[];
+
+    language = GlobalVariable.LanguageResourse;
 
 // tslint:disable-next-line: no-input-rename
     @Input('list') list: Category[];

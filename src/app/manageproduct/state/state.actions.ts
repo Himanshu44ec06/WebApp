@@ -105,6 +105,9 @@ export type ManageProductAction =  LoadCategory
 | SetCurrentCategory
 | ClearCurrentCategory
 | InitalizeCategory
+| AddCategory
+| AddCategorySuccess
+| AddCategoryFail
 | UpdateCategory
 | UpdateCategorySuccess
 | UpdateCategoryFailed

@@ -38,7 +38,6 @@ export class ManageUserEffects {
                     catchError(err => of(new ManagerUserActions.CreateUserFail(err)))
                 )
             )
-
         );
 
         @Effect()
