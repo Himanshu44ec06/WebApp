@@ -9,7 +9,7 @@ export  class  Base  {
       Inclusions: Inclusions[];
       Exclusions: Exclusions[];
       DisplayCode: string;
-    constructor(){
+    constructor() {
            this.Meta = {};
            this.FAQ = [];
            this.Inclusions = [];

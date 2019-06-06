@@ -22,8 +22,12 @@ export class ShellComponent implements  OnInit {
       }
 
       ngOnInit() {
+
+            this.store.dispatch(new actions.LoadCategory());
+
             this.store.pipe(select(state.getCurrentCategory))
                   .subscribe( category => this.CurrentCategory = category);
+
             this.store.pipe( select(state.getCategory))
                   .subscribe(Categories => this.CategoryList =  Categories);
       }
