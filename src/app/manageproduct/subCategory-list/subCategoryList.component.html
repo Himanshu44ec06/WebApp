@@ -1,0 +1,26 @@
+<table mdbTable hover="true" striped="true" [hidden]="FilterList.length<1">
+    <thead>
+      <tr>
+        <th  scope="col">
+
+        </th>
+        <th  scope="col">{{language.DisplayName}}</th>
+        <th  scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol *ngFor="let el of FilterList">
+        <th>
+            <img [src]="el.Icon" style="width:30px;"  alt="UserName">
+        </th>
+        <td>
+          <button [routerLink]="[el.Id]" class="btn btn-default">{{el.Name}}</button>
+        </td>
+        
+        <td>
+          <button  class="btn btn-sm btn-primary" (click)="Edit(el)"><i class="fas fa-edit"></i></button>
+          <button  class="btn btn-sm btn-primary" (click)="Delete(el)"><i class="far fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
