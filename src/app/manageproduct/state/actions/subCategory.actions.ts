@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { SubCategory } from  '../../model'
+import { SubCategory } from '../../model';
 
 
 export enum  ManageSubCategoryActionTypes {

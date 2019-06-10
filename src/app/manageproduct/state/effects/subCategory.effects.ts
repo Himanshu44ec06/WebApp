@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { ManageSubCategoryService } from '../../service';
-import  { Action }  from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import  * as ManageSubCategoryAction from '../actions/subCategoryactions';
+import * as ManageSubCategoryAction from '../actions/subCategory.actions';
 import { Observable, of } from 'rxjs';
-import { mergeMap, map, catchError, subscribeOn } from 'rxjs/operators';
-import { SubCategory } from '../../model';
+import { mergeMap, map, catchError } from 'rxjs/operators';
 
 
 @Injectable()
 export class  ManageSubCategoryEffects {
     constructor (private manageSubCategoryService: ManageSubCategoryService,
-            private  action:  Actions
-        ){
+                 private  action:Actions
+        ) {
 
     }
 
@@ -34,7 +33,7 @@ export class  ManageSubCategoryEffects {
               map( (subCat) =>   new  ManageSubCategoryAction.UpdateSubCategorySuccess(subCat) ),
               catchError( (err) =>  of(new  ManageSubCategoryAction.UpdateSubCategoryFailed(err))  ) 
         ) )
-    )
+    );
 
     @Effect()
     DeleteSubCategory$ :  Observable<Action>  = this.action.pipe(
@@ -44,7 +43,7 @@ export class  ManageSubCategoryEffects {
             catchError(  (err) =>  of(new ManageSubCategoryAction.DeleteSubCategoryFailed(err)) ) 
 
         ) )
-    )
+    );
 
     @Effect()
     AddSubCategory$ :  Observable<Action> = this.action.pipe( 
@@ -53,5 +52,5 @@ export class  ManageSubCategoryEffects {
                 map( (subCat) => new ManageSubCategoryAction.AddSubCategorySuccess(subCat)),
                 catchError( (err) =>  of(new ManageSubCategoryAction.AddSubCategoryFail(err)) )
         ))
-    )  
+    )  ;
 }

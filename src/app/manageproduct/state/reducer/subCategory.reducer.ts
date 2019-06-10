@@ -1,42 +1,34 @@
-import  *  as baseReducer  from '../state.reducer';
-import * as  SubCategoryAction from '../actions/subCategoryactions';
-import { stat } from 'fs';
+import * as baseReducer from '../state.reducer';
+import * as  SubCategoryAction from '../actions/subCategory.actions';
 
-
-
-
-export    function  reducer(state = baseReducer.intialState, actions: SubCategoryAction.ManageSubcategoryAction): 
+export    function  reducer(state = baseReducer.intialState, actions: SubCategoryAction.ManageSubcategoryAction):
  baseReducer.ManageProductState {
 
-    switch(actions.type) {
-        case    SubCategoryAction.ManageSubCategoryActionTypes.LoadSubCategoryFail: 
-        case SubCategoryAction.ManageSubCategoryActionTypes.AddSubCategoryFail : 
-        case SubCategoryAction.ManageSubCategoryActionTypes.UpdateSubCategoryFailed :
-        case SubCategoryAction.ManageSubCategoryActionTypes.DeleteSubCategoryFailed :
+    switch (actions.type) {
+        case SubCategoryAction.ManageSubCategoryActionTypes.LoadSubCategoryFail:
+        case SubCategoryAction.ManageSubCategoryActionTypes.AddSubCategoryFail:
+        case SubCategoryAction.ManageSubCategoryActionTypes.UpdateSubCategoryFailed:
+        case SubCategoryAction.ManageSubCategoryActionTypes.DeleteSubCategoryFailed:
                return {
                    ...state,
                    error : actions.payload,
                    SubCategory : []
                 };
-            
-        case  SubCategoryAction.ManageSubCategoryActionTypes.UpdateSubCategorySuccess : 
-            
+        case  SubCategoryAction.ManageSubCategoryActionTypes.UpdateSubCategorySuccess:
             const updateCategory = state.SubCategory.map(
                 item => actions.payload.Id === item.Id ? actions.payload : item);
-           return {
+            return {
                 ...state,
                 error : '',
                 SubCategory : updateCategory
             };
-        
-        case SubCategoryAction.ManageSubCategoryActionTypes.LoadSubCategorySuccess : 
+        case SubCategoryAction.ManageSubCategoryActionTypes.LoadSubCategorySuccess:
             return  {
              ...state ,
              error : '',
              SubCategory :  actions.payload
             };
-        
-        case SubCategoryAction.ManageSubCategoryActionTypes.AddSubCategorySuccess :
+        case SubCategoryAction.ManageSubCategoryActionTypes.AddSubCategorySuccess:
               return {
                   ...state,
                   error : '',
@@ -47,10 +39,8 @@ export    function  reducer(state = baseReducer.intialState, actions: SubCategor
                   ...state,
                   error : '',
                   SubCategory  :  state.SubCategory.filter( f => f.Id !== actions.payload.Id )
-             }
-    
-        default : 
+             };
+        default:
             return  state;
-        
     }
 }

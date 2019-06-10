@@ -29,20 +29,20 @@ export  const  getCurrentCategory = createSelector(
 export  const getSubCategory = createSelector(
     getFeatureState,
     state => state.SubCategory 
-)
+);
 
 export const getCurrentSubCategory = createSelector(
     getFeatureState,
     state =>  state.CurrentSubCategory
-)
+);
 
 export  const getCurrentService  =  createSelector(
     getFeatureState,
     state =>  state.CurrentService
-)
+);
 
 export  const  getService = createSelector(
     getFeatureState,
     state =>  state.Services
-)
+);
 

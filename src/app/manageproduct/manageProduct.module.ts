@@ -6,7 +6,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { GlobalVariable} from '../global';
 
 import {ShellComponent, CreateCategoryComponent, CategoryListComponent, CategoryThumbnailComponent,
-    ManageCategoryService, ManageService, ManageSubCategoryService} from './index';
+    ManageCategoryService, ManageService, ManageSubCategoryService }  from './index';
 import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
 import { reducer } from './state/state.reducer';
