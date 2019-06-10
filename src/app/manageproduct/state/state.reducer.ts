@@ -16,7 +16,7 @@ export  interface  ManageProductState {
 
 }
 
-const  intialState: ManageProductState = {
+export const  intialState: ManageProductState = {
     Category : [],
     CurrentCategory : null,
     SubCategory : [],

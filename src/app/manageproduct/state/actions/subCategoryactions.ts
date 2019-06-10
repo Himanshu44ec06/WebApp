@@ -76,25 +76,25 @@ export  class LoadSubCategory implements Action {
     readonly type =  ManageSubCategoryActionTypes.LoadSubCategory;
 }
 
-export  class LoadSubCategorySuccess {
+export  class LoadSubCategorySuccess implements Action {
     readonly type =  ManageSubCategoryActionTypes.LoadSubCategorySuccess;
     constructor(public payload: SubCategory[]) { }
 }
 
-export class LoadSubCategoryFail {
+export class LoadSubCategoryFail implements  Action {
     readonly  type = ManageSubCategoryActionTypes.LoadSubCategoryFail;
     constructor(public payload: string) { }
 }
 
-export class  SetSubCurrentCategory  {
+export class  SetSubCurrentCategory implements Action  {
     readonly  type  = ManageSubCategoryActionTypes.SetCurrentSubCategory;
     constructor(public payload: SubCategory) { }
 }
-export class ClearsubCurrentCategory {
+export class ClearsubCurrentCategory implements Action {
     readonly  type = ManageSubCategoryActionTypes.ClearCurrentSubCategory;
 }
 
-export  class  InitalizeSubCategory  {
+export  class  InitalizeSubCategory  implements Action {
     readonly  type = ManageSubCategoryActionTypes.InitalizeSubCategory;
     public payload =  new SubCategory();
 }
@@ -111,3 +111,6 @@ export type ManageSubcategoryAction =  LoadSubCategory
 | SetSubCurrentCategory
 | ClearsubCurrentCategory
 | InitalizeSubCategory
+| AddSubCategory 
+| AddSubCategoryFail 
+| AddSubCategorySuccess
