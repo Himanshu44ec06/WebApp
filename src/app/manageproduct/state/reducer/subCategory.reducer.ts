@@ -1,7 +1,7 @@
 import * as baseReducer from '../state.reducer';
 import * as  SubCategoryAction from '../actions/subCategory.actions';
 
-export    function  reducer(state = baseReducer.intialState, actions: SubCategoryAction.ManageSubcategoryAction):
+export    function  SubCategoryReducer(state = baseReducer.intialState, actions: SubCategoryAction.ManageSubcategoryAction):
  baseReducer.ManageProductState {
 
     switch (actions.type) {
