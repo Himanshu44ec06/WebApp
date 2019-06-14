@@ -1,5 +1,7 @@
 import { Category, SubCategory, Service } from '../model';
-import { ManageProductActionTypes , ManageProductAction } from './state.actions';
+
+import  { CategoryReducer, SubCategoryReducer } from  './reducer';
+import { ActionReducerMap } from '@ngrx/store';
 
 
 export  interface  ManageProductState {
@@ -26,81 +28,12 @@ export const  intialState: ManageProductState = {
     error : ''
 };
 
-export  function reducer(state = intialState, actions: ManageProductAction): ManageProductState {
-
-    switch (actions.type) {
-
-        case ManageProductActionTypes.LoadCategorySuccess :
-           return  {
-               ...state,
-               error : '',
-               Category: actions.payload
-           };
-        case ManageProductActionTypes.LoadCategoryFail :
-            return  {
-                ...state,
-                error : actions.payload,
-                Category : []
-            };
-        case ManageProductActionTypes.ClearCurrentCategory :
-            return {
-                ...state,
-                CurrentCategory : null
-            };
-        case ManageProductActionTypes.InitalizeCategory :
-            return {
-                ...state,
-                CurrentCategory : actions.payload
-            };
-        case ManageProductActionTypes.SetCurrentCategory :
-            return  {
-                ...state,
-                CurrentCategory: actions.payload
-            };
-        case ManageProductActionTypes.AddCategorySuccess:
-        return  {
-             ...state,
-             error : '',
-             CurrentCategory :  null,
-             Category : [...state.Category, actions.payload]
-        };
-
-        case ManageProductActionTypes.AddCategoryFail:
-        return  {
-             ...state,
-             error: actions.payload
-        };
-
-
-        case ManageProductActionTypes.UpdateCategorySuccess:
-             const updateCategory = state.Category.map(
-                     item => actions.payload.Id === item.Id ? actions.payload : item);
-             return  {
-                ...state,
-                error : '',
-                CurrentCategory : null,
-                Category : updateCategory
-            };
-        case ManageProductActionTypes.UpdateCategoryFailed :
-            return  {
-                    ...state,
-                    error : actions.payload
-            };
-
-        case ManageProductActionTypes.DeleteCategorySuccess :
-            return {
-                ...state,
-                Category : state.Category.filter( f => f.Id !== actions.payload.Id),
-                error : ''
-            };
-        case ManageProductActionTypes.DeleteCategoryFailed :
-            return  {
-                ...state,
-                error : actions.payload
-            };
-
-        default :
-        return state;
-    }
+export  const reducer :  ActionReducerMap<ManageProductState>  = {
+  Category :  CategoryReducer,
+  CurrentCategory : null,
+    SubCategory : null,
+    CurrentSubCategory : null,
+    Services : null,
+    CurrentService : null,
+    error : null
 }
-
