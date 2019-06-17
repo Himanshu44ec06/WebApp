@@ -1,45 +1,24 @@
-import * as baseReducer from '../state.reducer';
 import * as  SubCategoryAction from '../actions/subCategory.actions';
+import { SubCategory } from '../../model';
 
-export    function  SubCategoryReducer(state = baseReducer.intialState, actions: SubCategoryAction.ManageSubcategoryAction):
- baseReducer.ManageProductState {
+export    function  SubCategoryReducer(state: SubCategory[] =[], actions: SubCategoryAction.ManageSubcategoryAction){
 
     switch (actions.type) {
-        case SubCategoryAction.ManageSubCategoryActionTypes.LoadSubCategoryFail:
-        case SubCategoryAction.ManageSubCategoryActionTypes.AddSubCategoryFail:
-        case SubCategoryAction.ManageSubCategoryActionTypes.UpdateSubCategoryFailed:
-        case SubCategoryAction.ManageSubCategoryActionTypes.DeleteSubCategoryFailed:
-               return {
-                   ...state,
-                   error : actions.payload,
-                   SubCategory : []
-                };
+       
         case  SubCategoryAction.ManageSubCategoryActionTypes.UpdateSubCategorySuccess:
-            const updateCategory = state.SubCategory.map(
+            const updateCategory = state.map(
                 item => actions.payload.Id === item.Id ? actions.payload : item);
-            return {
-                ...state,
-                error : '',
-                SubCategory : updateCategory
-            };
+            return [...updateCategory]
+            
         case SubCategoryAction.ManageSubCategoryActionTypes.LoadSubCategorySuccess:
-            return  {
-             ...state ,
-             error : '',
-             SubCategory :  actions.payload
-            };
+             return [...actions.payload]
+
         case SubCategoryAction.ManageSubCategoryActionTypes.AddSubCategorySuccess:
-              return {
-                  ...state,
-                  error : '',
-                  SubCategory : [ ...state.SubCategory, actions.payload]
-              };
+                return  [...state, actions.payload]
+
         case SubCategoryAction.ManageSubCategoryActionTypes.DeleteSubCategorySuccess :
-             return {
-                  ...state,
-                  error : '',
-                  SubCategory  :  state.SubCategory.filter( f => f.Id !== actions.payload.Id )
-             };
+                return  state.filter(f => f.Id !== actions.payload.Id);
+                
         default:
             return  state;
     }
