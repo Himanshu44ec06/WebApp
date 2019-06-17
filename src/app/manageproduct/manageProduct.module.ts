@@ -11,7 +11,8 @@ import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
 import { reducer } from './state/state.reducer';
 
-import { ManageCategoryEffects } from './state/state.effects';
+
+import { ManageCategoryEffects, ManageSubCategoryEffects } from './state/effects';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -25,7 +26,7 @@ const  route: Routes = [
         CommonModule,
         SharedModule,
         StoreModule.forFeature(GlobalVariable.Store.ManageCategory, reducer),
-        EffectsModule.forFeature([ManageCategoryEffects]),
+        EffectsModule.forFeature([ManageCategoryEffects,ManageSubCategoryEffects]),
         RouterModule.forChild(route),
         MDBBootstrapModule.forRoot()
     ],
@@ -40,7 +41,8 @@ const  route: Routes = [
         ManageCategoryService,
         ManageService,
         ManageSubCategoryService,
-        ManageCategoryEffects
+        ManageCategoryEffects,
+        ManageSubCategoryEffects
     ],
     schemas: [NO_ERRORS_SCHEMA]
 })

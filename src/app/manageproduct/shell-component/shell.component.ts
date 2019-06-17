@@ -4,7 +4,7 @@ import { GlobalVariable } from '../../global';
 
 
 import * as fromStore from '../state/state.reducer';
-import * as  actions from '../state/state.actions';
+import * as  actions from '../state/actions/category.actions';
 import * as  state from '../state';
 import { Store, select } from '@ngrx/store';
 
