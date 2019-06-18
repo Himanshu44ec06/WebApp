@@ -1,25 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ManageCategoryService } from '../service';
 import {Router, ActivatedRoute} from '@angular/router';
-import { Category } from '../model';
-import { mergeMap, map, catchError } from 'rxjs/operators';
+import { Category, SubCategory } from '../model';
 import { GlobalVariable } from 'src/app/global';
+import { Store, select } from '@ngrx/store';
+import * as State from '../state';
+import { ManageProductState } from '../state/state.reducer';
+import * as  SubCategoryAction from  '../state/actions/subCategory.actions';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 
 @Component({
     templateUrl : './categoryThumbnail.component.html'
 })
-export class  CategoryThumbnailComponent implements OnInit  {
+export class  CategoryThumbnailComponent implements OnInit, OnDestroy  {
 
     category: Category |null = null;
-    Id = 'Id';
+    private  Id = 'Id';
     language =  GlobalVariable.LanguageResourse;
+    private _destroyed$ = new Subject();
+    subCategoryList: SubCategory[] | null;
+    subCategory: SubCategory;
+    subCategorySearchString: string = '';
 
    constructor(private categoryService: ManageCategoryService,
                private activatedRoute: ActivatedRoute,
-               private route: Router
+               private route: Router,
+               private store:  Store<ManageProductState>
     ) {
 
+   }
+
+   ngOnDestroy() {
+       this._destroyed$.next();
    }
 
    ngOnInit() {
@@ -29,6 +43,7 @@ export class  CategoryThumbnailComponent implements OnInit  {
             category => {
                 if  (category) {
                     this.category = category;
+                    this._loadSubCategory();
             } else {
                 this.route.navigateByUrl(GlobalVariable.Url.ManageProduct);
             }
@@ -36,6 +51,45 @@ export class  CategoryThumbnailComponent implements OnInit  {
         );
 
       });
+
+      this._listenSubCategoryList();
+      this._listenSubCategory();
+   }
+
+
+   addSubCategoryEvent() {
+       this.store.dispatch( new SubCategoryAction.InitalizeSubCategory());
+   }
+
+   deleteSubcategory(item: SubCategory) {
+       this.store.dispatch( new SubCategoryAction.DeleteSubCategory(item));
+   }
+
+   editSubCategory(item: SubCategory) {
+        this.store.dispatch( new SubCategoryAction.UpdateSubCategory(item));
+   }
+
+
+
+   private _loadSubCategory() {
+        this.store.dispatch(new SubCategoryAction.LoadSubCategory(this.category.Id));
+   }
+
+   private _listenSubCategoryList() {
+         this.store.pipe(select(State.getSubCategory))
+            .pipe(takeUntil(this._destroyed$))
+            .subscribe( (list) => {
+                   this.subCategoryList =  list;
+                   console.log(this.subCategoryList);
+            });
+   }
+
+   private _listenSubCategory() {
+         this.store.pipe(select(State.getCurrentSubCategory))
+            .pipe(takeUntil(this._destroyed$))
+            .subscribe( (subcategory) => {
+                this.subCategory =  subcategory;
+            })
    }
 
 }

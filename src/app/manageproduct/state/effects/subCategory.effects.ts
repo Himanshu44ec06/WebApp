@@ -19,7 +19,7 @@ export class  ManageSubCategoryEffects {
     LoadSubCategory$: Observable<Action>  = this.action.pipe(
 
         ofType(ManageSubCategoryAction.ManageSubCategoryActionTypes.LoadSubCategory),
-        mergeMap( (categoryId) =>  this.manageSubCategoryService.getSubcategoryBycategoryId(categoryId).pipe(
+        mergeMap( (action: any ) =>  this.manageSubCategoryService.getSubcategoryBycategoryId(action.payload).pipe(
             map( (list)  =>  new ManageSubCategoryAction.LoadSubCategorySuccess(list)),
             catchError( (err) => of(new ManageSubCategoryAction.LoadSubCategoryFail(err)) )
         )  )

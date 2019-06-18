@@ -5,7 +5,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { GlobalVariable} from '../global';
 
-import {ShellComponent, CreateCategoryComponent, CategoryListComponent, CategoryThumbnailComponent,
+import {ShellComponent, CreateCategoryComponent, CategoryListComponent, CategoryThumbnailComponent, SubCategoryListComponent,
     ManageCategoryService, ManageService, ManageSubCategoryService }  from './index';
 import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
@@ -35,7 +35,8 @@ const  route: Routes = [
         ShellComponent,
         CreateCategoryComponent,
         CategoryListComponent,
-        CategoryThumbnailComponent
+        CategoryThumbnailComponent,
+        SubCategoryListComponent
     ],
     providers : [
         ManageCategoryService,

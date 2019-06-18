@@ -74,6 +74,7 @@ export class DeleteSubCategoryFailed implements  Action {
 
 export  class LoadSubCategory implements Action {
     readonly type =  ManageSubCategoryActionTypes.LoadSubCategory;
+    constructor(public  payload: number) {}
 }
 
 export  class LoadSubCategorySuccess implements Action {
