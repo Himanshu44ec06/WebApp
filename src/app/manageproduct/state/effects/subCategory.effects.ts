@@ -29,7 +29,7 @@ export class  ManageSubCategoryEffects {
     @Effect()
     UpdateSubCategory$ : Observable<Action>  = this.action.pipe(
         ofType( ManageSubCategoryAction.ManageSubCategoryActionTypes.UpdateSubCategory),
-        mergeMap( (subcategory) => this.manageSubCategoryService.update(subcategory).pipe(
+        mergeMap( (action : any) => this.manageSubCategoryService.update(action.payload).pipe(
               map( (subCat) =>   new  ManageSubCategoryAction.UpdateSubCategorySuccess(subCat) ),
               catchError( (err) =>  of(new  ManageSubCategoryAction.UpdateSubCategoryFailed(err))  ) 
         ) )
@@ -38,7 +38,7 @@ export class  ManageSubCategoryEffects {
     @Effect()
     DeleteSubCategory$ :  Observable<Action>  = this.action.pipe(
         ofType( ManageSubCategoryAction.ManageSubCategoryActionTypes.DeleteSubCategory ),
-        mergeMap( (SubCategory) =>  this.manageSubCategoryService.deleteSubCategory(SubCategory).pipe(
+        mergeMap( (action: any) =>  this.manageSubCategoryService.deleteSubCategory(action.payload).pipe(
             map( (subcat) =>  new ManageSubCategoryAction.DeleteSubCategorySuccess(subcat)),
             catchError(  (err) =>  of(new ManageSubCategoryAction.DeleteSubCategoryFailed(err)) ) 
 
@@ -48,7 +48,7 @@ export class  ManageSubCategoryEffects {
     @Effect()
     AddSubCategory$ :  Observable<Action> = this.action.pipe( 
         ofType(ManageSubCategoryAction.ManageSubCategoryActionTypes.AddSubCategory),
-        mergeMap( (SubCategory) =>  this.manageSubCategoryService.addSubCategory(SubCategory).pipe(
+        mergeMap( (action: any)  =>  this.manageSubCategoryService.addSubCategory(action.payload).pipe(
                 map( (subCat) => new ManageSubCategoryAction.AddSubCategorySuccess(subCat)),
                 catchError( (err) =>  of(new ManageSubCategoryAction.AddSubCategoryFail(err)) )
         ))

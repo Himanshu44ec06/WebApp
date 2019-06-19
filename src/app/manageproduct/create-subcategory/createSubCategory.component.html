@@ -1,0 +1,20 @@
+
+<form #CreateSubCategoryForm="ngForm" (submit)="Submit()"  class="border border-light p-5">
+    <div class="form-group">
+      <label for="exampleInputEmail1">{{language.DisplayName}}</label>
+      <input type="text" class="form-control" [(ngModel)]="subCategory.Name" name="name"  placeholder="{{language.DisplayName}}">
+     
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">{{language.Icon}} {{language.Url}}</label>
+      <input type="text" class="form-control" [(ngModel)]="subCategory.Icon" name="Icon" placeholder="{{language.Icon}}">
+    </div>
+    
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">{{language.Description}}</label>
+        <textarea class="form-control" [(ngModel)]="subCategory.Description" name="Description"  rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{language.Submit}}</button>
+    <button type="button"  class="btn btn-light" (click)="CancelSub()">{{language.Cancel}}</button>
+  </form>

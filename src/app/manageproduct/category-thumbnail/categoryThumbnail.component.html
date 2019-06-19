@@ -29,7 +29,7 @@
                       
                   </th>
                   <th>
-                      <button mdbBtn type="button" color="default" (click)="addSubCategoryEvent()" size="sm" mdbWavesEffect>
+                      <button mdbBtn type="button" color="default" (click)="newSubCategoryEvent()" size="sm" mdbWavesEffect>
                           <i class="fas fa-plus"></i>  {{language.Add}}
                         </button>
                   </th>
@@ -38,7 +38,11 @@
               </thead>
         </table>
     </div>
-    <div class="row" [hidden]="subCategory">
-        <subcategory-list [list]="subCategoryList" [search-string]="subCategorySearchString" (edit)="editSubCategory(item)" (delete)="deleteSubcategory(item)"></subcategory-list>
+    <div class="row" *ngIf="!subCategory">
+        <subcategory-list [list]="subCategoryList" [search-string]="subCategorySearchString" (cancel)='cancelSubCategory()' 
+        (edit-Emitter)="editSubCategory($event)" (delete)="deleteSubcategory($event)"></subcategory-list>
+    </div>
+    <div class="row" *ngIf="subCategory">
+        <create-subcategory [current-subCategory]="subCategory" (cancel)="cancelSubCategory()" (submitChild)="addUpdateCategory($event)" ></create-subcategory>
     </div>
 </div>

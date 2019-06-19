@@ -14,7 +14,7 @@
             <img [src]="el.Icon" style="width:30px;"  alt="UserName">
         </th>
         <td>
-          <button [routerLink]="[el.Id]" class="btn btn-default">{{el.Name}}</button>
+          <button [routerLink]="['subcat',el.Id]" class="btn btn-default">{{el.Name}}</button>
         </td>
         
         <td>

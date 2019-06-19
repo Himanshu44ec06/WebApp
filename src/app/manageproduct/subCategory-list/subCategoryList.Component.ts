@@ -18,7 +18,7 @@ export class SubCategoryListComponent implements  OnInit, OnChanges {
     @Input('search-string') searchString:  string = '';
     @Input('list') List: SubCategory[] = [];
 
-    @Output('Edit') editEmitter =  new EventEmitter();
+    @Output('edit-Emitter') editEmitter =  new EventEmitter();
     @Output('Delete') deleteEmitter = new  EventEmitter();
 
     constructor() {

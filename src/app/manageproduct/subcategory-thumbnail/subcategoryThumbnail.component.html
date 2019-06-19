@@ -1,0 +1,17 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/admin/manageproduct']" >{{language.Category}}</a></li>
+      <li class="breadcrumb-item"> <a [routerLink]="['/admin/manageproduct',category.Id]"  >{{category?.Name}}</a> </li>
+      <li class="breadcrumb-item active" >{{subCategory?.Name}}</li>
+    </ol>
+</nav>
+
+<div class="row"  *ngIf="subCategory">
+    <div class="col-md-3" style="text-align:center">
+         <img [src]="subCategory.Icon">
+         <span>{{subCategory.Name}}</span>
+    </div>
+    <div class="col-md-9">
+        {{subCategory.Description}}
+    </div>
+</div>

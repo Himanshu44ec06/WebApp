@@ -5,7 +5,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { GlobalVariable} from '../global';
 
-import {ShellComponent, CreateCategoryComponent, CategoryListComponent, CategoryThumbnailComponent, SubCategoryListComponent,
+import {ShellComponent, CreateCategoryComponent, CategoryListComponent,
+     CategoryThumbnailComponent, SubCategoryListComponent,CreateSubcategoryComponent,
+     SubcategoryThumbnailComponent,
     ManageCategoryService, ManageService, ManageSubCategoryService }  from './index';
 import { StoreModule } from '@ngrx/store';
 import {  EffectsModule } from '@ngrx/effects';
@@ -18,7 +20,10 @@ import { SharedModule } from '../shared/shared.module';
 
 const  route: Routes = [
     { path : '', component :  ShellComponent},
+    {path : ':Id/subcat/:subcatId', component: SubcategoryThumbnailComponent},
     { path : ':Id', component: CategoryThumbnailComponent}
+    
+    
 ];
 
 @NgModule({
@@ -36,7 +41,9 @@ const  route: Routes = [
         CreateCategoryComponent,
         CategoryListComponent,
         CategoryThumbnailComponent,
-        SubCategoryListComponent
+        SubCategoryListComponent,
+        CreateSubcategoryComponent,
+        SubcategoryThumbnailComponent
     ],
     providers : [
         ManageCategoryService,

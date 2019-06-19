@@ -12,7 +12,7 @@ export  class ManageSubCategoryService {
         subCat.CategoryId = 1;
         subCat.Name = "Furniture And Furnishings";
         subCat.Id = 1;
-        subCat.Icon = "https://d2vj71og9gdu4k.cloudfront.net/WEB/service/e2e-fabric-sofa-shampooing.jpg";
+        subCat.Icon = "https://d2vj71og9gdu4k.cloudfront.net/WEB/service/Home_Cleaning2018111318.svg";
         this.list.push(subCat);
     }
 
@@ -22,6 +22,13 @@ export  class ManageSubCategoryService {
         );
     }
 
+    getSubcategoryById(id){
+        const  index  = this.list.findIndex( f =>  f.Id === id );
+        if(index > -1)
+            return  of(this.list[index]);
+        return  of(null)
+    }
+
     update(subcategory: SubCategory) : Observable<SubCategory> {
            const  index  = this.list.findIndex( f =>  f.Id === subcategory.Id );
            this.list[index] = subcategory;
@@ -29,6 +36,7 @@ export  class ManageSubCategoryService {
     }
 
     addSubCategory(subCategory: SubCategory) : Observable<SubCategory> {
+            subCategory.Id = this.list.length + 1;
             this.list.push(subCategory);
             return  of(subCategory);
     }

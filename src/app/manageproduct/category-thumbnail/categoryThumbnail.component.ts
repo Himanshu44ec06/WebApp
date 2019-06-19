@@ -57,8 +57,19 @@ export class  CategoryThumbnailComponent implements OnInit, OnDestroy  {
    }
 
 
-   addSubCategoryEvent() {
+   newSubCategoryEvent() {
        this.store.dispatch( new SubCategoryAction.InitalizeSubCategory());
+   }
+
+   addUpdateCategory(item: SubCategory){
+        if(item.Id &&  item.Id !== 0){
+            this.store.dispatch(new SubCategoryAction.UpdateSubCategory(item));
+            this.cancelSubCategory();
+        }else {
+             item.CategoryId  = this.category.Id;
+            this.store.dispatch(new SubCategoryAction.AddSubCategory(item));
+            this.cancelSubCategory();
+        }
    }
 
    deleteSubcategory(item: SubCategory) {
@@ -66,7 +77,11 @@ export class  CategoryThumbnailComponent implements OnInit, OnDestroy  {
    }
 
    editSubCategory(item: SubCategory) {
-        this.store.dispatch( new SubCategoryAction.UpdateSubCategory(item));
+        this.store.dispatch( new SubCategoryAction.SetSubCurrentCategory(item));
+   }
+
+   cancelSubCategory() {
+       this.store.dispatch( new  SubCategoryAction.ClearsubCurrentCategory());
    }
 
 
