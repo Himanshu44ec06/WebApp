@@ -5,5 +5,6 @@ export  *  from  './category-thumbnail/categoryThumbnail.component';
 export *  from  './subCategory-list/subCategoryList.Component';
 export *  from  './create-subcategory/createSubCategory.component';
 export *  from  './subcategory-thumbnail/subcategoryThumbail.component';
+export  * from  './service-list/servicelist.component';
 
 export  * from './service';

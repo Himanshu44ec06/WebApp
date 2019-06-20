@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ModalPopupComponent, CardComponent } from './component';
+import { Util } from './service/Util.service';
 
 @NgModule({
   imports: [
@@ -19,5 +20,8 @@ import { ModalPopupComponent, CardComponent } from './component';
      ModalPopupComponent,
      CardComponent
   ],
+  providers : [
+    Util
+  ]
 })
 export class SharedModule { }

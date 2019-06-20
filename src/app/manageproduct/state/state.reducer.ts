@@ -1,6 +1,8 @@
 import { Category, SubCategory, Service } from '../model';
 
-import  { CategoryReducer, CurrentCategoryReducer, CurrentSubCategoryReducer, SubCategoryReducer } from  './reducer';
+import  { CategoryReducer, CurrentCategoryReducer, 
+    CurrentSubCategoryReducer, SubCategoryReducer, 
+    ServiceReducer, CurrentServiceReducer } from  './reducer';
 import { ActionReducerMap } from '@ngrx/store';
 
 
@@ -33,7 +35,7 @@ export  const reducer :  ActionReducerMap<ManageProductState>  = {
   CurrentCategory : CurrentCategoryReducer,
     SubCategory : SubCategoryReducer,
     CurrentSubCategory :  CurrentSubCategoryReducer,
-    Services : null,
-    CurrentService : null,
+    Services : ServiceReducer,
+    CurrentService : CurrentServiceReducer,
     error : null
 };

@@ -1,12 +1,22 @@
 import  { Injectable } from '@angular/core';
-import { Service } from '../model';
+import { Service, ServiceType } from '../model';
 import { of } from 'rxjs';
 
 @Injectable()
 export  class ManageService {
-    list: Service[];
+    list: Service[] = [];
 
-    constructor() {}
+    constructor() {
+        let service = new Service();
+        service.Name = "Upto 1 ton";
+        service.Price = 1800;
+        service.Discount = 0;
+        service.Note = '';
+        service.SubCategoryId = 1;
+        service.Type = ServiceType.Unit;
+
+        this.list.push(service);
+    }
 
     getServiceById(Id) {
          const index =  this.list.findIndex(f => f.Id === Id);

@@ -10,9 +10,9 @@ export  class ManageSubCategoryService {
     constructor(){
         let subCat  = new SubCategory();
         subCat.CategoryId = 1;
-        subCat.Name = "Furniture And Furnishings";
+        subCat.Name = "Gas Refill";
         subCat.Id = 1;
-        subCat.Icon = "https://d2vj71og9gdu4k.cloudfront.net/WEB/service/Home_Cleaning2018111318.svg";
+        subCat.Icon = "https://d2vj71og9gdu4k.cloudfront.net/WEB/service/Gas_Refill10.jpg";
         this.list.push(subCat);
     }
 

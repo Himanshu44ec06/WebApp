@@ -10,8 +10,8 @@ export  class ManageCategoryService {
     constructor() {
             this.category = new Category();
             this.category.Id = 1;
-            this.category.Name = 'Home Cleaning';
-            this.category.Icon = 'https://d2vj71og9gdu4k.cloudfront.net/WEB/service/Home_Cleaning2018111318.svg';
+            this.category.Name = 'AC Services';
+            this.category.Icon = 'https://d2vj71og9gdu4k.cloudfront.net/WEB/service/e2e_ac.svg';
             this.listOfCategory.push(this.category);
     }
     getcategoryById(id): Observable<Category> {

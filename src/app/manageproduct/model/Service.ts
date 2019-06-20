@@ -14,4 +14,10 @@ export class Service extends Base {
     Description = '';
     SubCategoryId = 0;
     Status = 0;
+    Note = '';
+    Type: ServiceType
+}
+
+export enum  ServiceType {
+    Unit
 }

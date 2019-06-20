@@ -7,11 +7,45 @@
 </nav>
 
 <div class="row"  *ngIf="subCategory">
-    <div class="col-md-3" style="text-align:center">
+    <div class="col-md-2" style="text-align:center">
          <img [src]="subCategory.Icon">
          <span>{{subCategory.Name}}</span>
     </div>
     <div class="col-md-9">
         {{subCategory.Description}}
     </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <table mdbTable borderless="true" [hidden]="currentService">
+            <thead>
+                <tr>
+                  
+                  <th>
+                   
+                      <input class="form-control form-control-sm ml-3 w-75" 
+                      type="text" [(ngModel)]="searchString" placeholder="Search" aria-label="Search"
+                        mdbInput>
+                      
+                  </th>
+                  <th>
+                      <button mdbBtn type="button" color="default" (click)="newSubCategoryEvent()" size="sm" mdbWavesEffect>
+                          <i class="fas fa-plus"></i>  {{language.Add}}
+                        </button>
+                  </th>
+                 
+                </tr>
+              </thead>
+        </table>
+    </div>
+    <div class="row" *ngIf="!currentService">
+   
+    <service-list [list]="serviceList" [serach-string]="searchString"  
+        (edit-Emitter)="EditService($event)" (delete)="DeleteService($event)"></service-list>
+    </div>
+    <!-- <div class="row" *ngIf="subCategory">
+        <create-subcategory [current-subCategory]="subCategory" (cancel)="cancelSubCategory()" (submitChild)="addUpdateCategory($event)" ></create-subcategory>
+    </div> -->
 </div>
