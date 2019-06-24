@@ -1,4 +1,4 @@
-<table mdbTable hover="true" striped="true" [hidden]="FilterList.length<1">
+<table mdbTable hover="true" striped="true" [hidden]="FilterList.length < 1">
     <thead>
       <tr>
         <th  scope="col">
@@ -10,8 +10,8 @@
     </thead>
     <tbody>
       <tr mdbTableCol *ngFor="let el of FilterList">
-        <th>
-            <img [src]="el.Icon" style="width:30px;"  alt="UserName">
+        <th >
+            <img *ngIf="el.Icon.length > 0" [src]="el.Icon" style="width:30px;"  alt="UserName">
         </th>
         <td>
           <button [routerLink]="['subcat',el.Id]" class="btn btn-default">{{el.Name}}</button>
